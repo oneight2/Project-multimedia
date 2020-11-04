@@ -5,8 +5,8 @@ class Home extends CI_Controller {
 
     public function index(){
         $data = array(
-			'title' => "Register"
+			'title' => "Home"
 		);
-		$this->load->view('dist/auth-register', $data);
+		$this->load->view('dist/home', $data);
     }
 }
