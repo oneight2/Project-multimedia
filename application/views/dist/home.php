@@ -103,7 +103,7 @@ $this->load->view('dist/_partials/header');
                       </select>
                     </div>
                   </div>
-                 
+
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" name="agree" class="custom-control-input" id="agree">
@@ -128,4 +128,4 @@ $this->load->view('dist/_partials/header');
     </section>
   </div>
 
-<?php $this->load->view('dist/_partials/js'); ?>
+<?php $this->load->view('dist/_partials/js');?>
