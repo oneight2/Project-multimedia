@@ -7,6 +7,6 @@ class Home extends CI_Controller {
 		$data = array(
 			'title' => "Home",
 		);
-		$this->load->view('dist/home', $data);
+		$this->load->view('dist/pengajuan_project', $data);
 	}
 }
