@@ -8,6 +8,7 @@ $this->load->view('dist/_partials/header');
   }
 </style>
 <body>
+  <?php var_dump($departemen);?>
   <div id="app">
     <section class="section">
       <div class="container-fluid mt-5">
@@ -24,66 +25,62 @@ $this->load->view('dist/_partials/header');
                 <form method="POST">
                   <div class="form-group">
                     <label for="frist_name">Nama</label>
-                    <input id="frist_name" type="text" class="form-control" name="frist_name" autofocus>
+                    <input id="frist_name" type="text" class="form-control" name="nama" autofocus>
                   </div>
                   <div class="form-group">
                     <label for="last_name">Nama Departemen</label>
-                    <select class="form-control select2">
-                        <option>Indonesia</option>
-                        <option>Palestine</option>
-                        <option>Syria</option>
-                        <option>Malaysia</option>
-                        <option>Thailand</option>
+                    <select class="form-control select2" name="departemen">
+                      <?php foreach ($departemen as $row): ?>
+                        <option value="<?=$row['id']?>"><?php echo $row['nama_departemen'] ?></option>
+                      <?php endforeach?>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="text">Nama Project</label>
-                    <input id="text" type="text" class="form-control" name="text">
+                    <input id="text" type="text" class="form-control" name="nama_project">
                     <div class="invalid-feedback">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="text">Deskripsi</label>
-                     <textarea class="summernote"></textarea>
+                     <textarea class="summernote" name="deskripsi"></textarea>
                     <div class="invalid-feedback">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="text">Upload Story Board</label>
-                    <input id="text" type="file" class="form-control" name="text">
+                    <input id="text" type="file" class="form-control" name="story_board">
                     <div class="invalid-feedback">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="text">Target Project</label>
-                    <input type="text" class="form-control datepicker">
+                    <input type="text" class="form-control datepicker" name="target">
                     <div class="invalid-feedback">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="text">Link Contoh Project</label>
-                    <input id="text" type="text" class="form-control" name="text">
+                    <input id="text" type="text" class="form-control" name="text" name="link">
                     <div class="invalid-feedback">
                     </div>
                   </div>
                  <div class="form-group">
                       <label class="form-label">Jenis Project</label>
                       <div class="selectgroup selectgroup-pills">
+                        <?php foreach ($jenis_project as $row): ?>
                         <label class="selectgroup-item">
-                          <input type="checkbox" name="value" value="HTML" class="selectgroup-input" checked="">
-                          <span class="selectgroup-button">Shoot Video</span>
+                          <input type="checkbox" name="" value="<?=$row['id']?>" class="selectgroup-input" checked="">
+                          <span class="selectgroup-button"><?=$row['jenis_project']?></span>
                         </label>
-                        <label class="selectgroup-item">
-                          <input type="checkbox" name="value" value="CSS" class="selectgroup-input">
-                          <span class="selectgroup-button">Editing Video</span>
-                        </label>
-                        <label class="selectgroup-item">
-                          <input type="checkbox" name="value" value="CSS" class="selectgroup-input">
-                          <span class="selectgroup-button">Desain Gambar</span>
-                        </label>
+                        <?php endforeach?>
                       </div>
+<<<<<<< HEAD:application/views/dist/pengajuan_project.php
                     </div>
+=======
+                  </div>
+>>>>>>> 451f1cc24c5c25918bd9e3ea431e746e6a0bde62:application/views/dist/home.php
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
