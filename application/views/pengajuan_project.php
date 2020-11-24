@@ -19,7 +19,7 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control " id="exampleFirstName"
                                         placeholder="Nama" name="nama">
-                                       <!--  <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                       <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <select class="form-control" id="exampleFormControlSelect1" name="departemen">
@@ -28,17 +28,17 @@
                                             <option value="<?= $row['id'] ?>"><?= $row['nama_departemen'] ?></option>
                                             <?php endforeach ?>
                                         </select>
-                                       <!--  <?= form_error('departemen', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                       <?= form_error('departemen', '<small class="text-danger pl-3">', '</small>'); ?> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="exampleInputEmail"
                                     placeholder="Judul Project" name="judul_project">
-                                    <!-- <?= form_error('judul_project', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                    <?= form_error('judul_project', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Deskripsi Project" name="deskripsi"></textarea>
-                                    <!-- <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                     <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
@@ -46,27 +46,27 @@
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="storyboard">
                                                 <label class="custom-file-label" for="inputGroupFile01">StoryBoard</label>
-                                                <!-- <?= form_error('storyboard', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                                <?= form_error('storyboard', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="date" class="form-control"
                                         id="exampleRepeatPassword" placeholder="Target Project" name="waktu">
-                                        <!-- <?= form_error('waktu', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                        <?= form_error('waktu', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="exampleInputEmail"
                                     placeholder="Link Contoh Project" name="link">
-                                    <!-- <?= form_error('link', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                    <?= form_error('link', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <?php
                                 $no = 1;
                                 $noo = 1;
                                 foreach ($jenis_project as $row): ?>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="<?= $row['id'] ?>" id="defaultCheck<?= $no++ ?>" name="jenis_project">
+                                    <input class="form-check-input" type="checkbox" value="<?= $row['id'] ?>" id="defaultCheck<?= $no++ ?>" name="jenis_project[]">
                                     <label class="form-check-label" for="defaultCheck<?= $noo++ ?>">
                                         <?= $row['jenis_project'] ?>
                                     </label>

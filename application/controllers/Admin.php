@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Admin extends CI_Controller {
 
 	public function __construct()
     {
@@ -13,16 +13,17 @@ class Home extends CI_Controller {
 
 	public function index() {
 		$data = array(
-			'title' => "Beranda",
+			'title' => "Admin",
 			'departemen' => $this->db->get('departemen')->result_array(),
 			'jenis_project' => $this->db->get('project')->result_array(),
 		);
 		$this->load->model('Pengajuan_model', 'pengajuan');
         $data['pengajuan'] = $this->pengajuan->getPengajuan();
 
-		$this->load->view('templates/auth_header', $data); 
-		$this->load->view('index', $data); 
-		$this->load->view('templates/auth_footer', $data); 
+		$this->load->view('templates/header', $data); 
+		$this->load->view('templates/sidebar', $data); 
+		$this->load->view('dashboard', $data); 
+		$this->load->view('templates/footer', $data); 
 	}
 
 	public function project(){
