@@ -14,7 +14,8 @@
                                     <p>Pengajuan project harap disiapkan dengan matang, tergambar secara jelas dalam file <b class="text-danger">Story Board</b> yang sudah di <b>diskusikan bersama dan acc semua yang bersangkutan</b>.</p>
                                 </div>
                             </div>
-                            <form class="user" method="post" action="<?= base_url('home/project'); ?>">
+                            <?= form_open_multipart('home/project') ?>
+                            <!-- <form class="user" method="post" action="<?= base_url('home/project'); ?>"> -->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control " id="exampleFirstName"
@@ -76,7 +77,8 @@
                                     Ajukan Project
                                 </button>
                                 
-                            </form>
+                            <!-- </form> -->
+                            <?= form_close(); ?>
                             <hr>
                         </div>
                     </div>

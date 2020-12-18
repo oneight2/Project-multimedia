@@ -43,6 +43,22 @@ class Home extends CI_Controller {
 			$this->load->view('pengajuan_project', $data); 
 			$this->load->view('templates/auth_footer', $data); 
 		} else {
+			$storyboard = $_FILES['storyboard'];
+			if($storyboard=''){}else{
+				$config['upload_path'] = './assets/storyboard';
+                $config['allowed_types'] = 'pdf|doc|docx|jpg|png';
+                $new_name = date('d-m-y').'_'.$_FILES['storyboard']['name'];
+                $config['file_name'] = $new_name;
+                // $config['encrypt_name'] = TRUE;
+				$this->load->library('upload',$config);
+				if($this->upload->do_upload('storyboard')){
+					$storyboard=$this->upload->data('file_name');
+					
+				}else{
+					 echo $this->upload->display_errors();
+				}
+
+			}
 			$data = [
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'id_departemen' => htmlspecialchars($this->input->post('departemen', true)),
@@ -51,10 +67,13 @@ class Home extends CI_Controller {
                 'target_project' => htmlspecialchars($this->input->post('waktu', true)),
                 'link' => htmlspecialchars($this->input->post('link', true)),
                 'id_jenis_project' => json_encode($this->input->post('jenis_project', true)),
-                'waktu_pengajuan' => time()
+                'waktu_pengajuan' => time(),
+                'storyboard' => $storyboard
             ];
+
+
             var_dump($data);
-            // die();
+            die();
             // $this->db->insert('pengajuan', $data);
              $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Terimakasih! pengajuan project akan segera kami proses</div>');
             redirect('home');

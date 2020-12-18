@@ -74,7 +74,7 @@
                         <th>Target Project</th>
                         <th>Nama Pengaju</th>
                         <th>Status</th>
-                        <th>Eksekusi</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,7 +88,10 @@
                         <td><?= $row['target_project'] ?></td>
                         <td><?= $row['nama'] ?></td>
                         <td><span class="badge badge-primary"><?= $row['status'] ?></span></td>
-                        <td>$112,000</td>
+                        <td>
+                            <a href="<?= base_url('admin/viewdata/').$row['id']?>"><span class="badge badge-primary">Lihat</span></a>
+                            <a href=""><span class="badge badge-danger">Hapus</span></a>
+                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
