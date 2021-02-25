@@ -57,12 +57,8 @@
         <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
     </div>
     <div class="card-body">
-        <a href="<?= base_url('home/project'); ?>" class="btn btn-primary btn-md mb-2">Isi Pengajuan Project</a>
         <?= $this->session->flashdata('message'); ?>
-        <div class="alert alert-info" role="alert">
-            <h4 class="alert-heading">Perhatian!</h4>
-            <p>Project dikerjakan berdasarkan urutan waktu pengisian form pengajuan</p>
-        </div>
+        
         <div class="table-responsive">
             <table class="table table-bordered pengajuan" id="dataTable" width="100%" cellspacing="0">
                 <thead>

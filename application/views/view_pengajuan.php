@@ -16,7 +16,6 @@
                                 <h6>Waktu Pengajuan</h6>
                                 <h6>Contoh Project</h6>
                                 <h6>Deskripsi</h6>
-                                <h6></h6>
                             </div>
                             <div class="col-md-9">
                                 <h6>: <?= $pengajuan['id_departemen'] ?> </h6>
@@ -32,6 +31,17 @@
                                 <div class="mt-3">
                                     <a href="<?= base_url('assets/storyboard/') . $pengajuan['storyboard'] ?>" class="btn btn-sm btn-warning" target="_blank">Download Storyboard</a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>Jenis Project</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <h6>: <?= print_r (json_decode($pengajuan['id_jenis_project'], true))?>
+                               </h6>
                             </div>
                         </div>
                     </div>

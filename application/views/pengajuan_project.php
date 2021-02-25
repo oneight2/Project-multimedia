@@ -26,7 +26,7 @@
                                         <select class="form-control" id="exampleFormControlSelect1" name="departemen">
                                             <option selected>Pilih Departemen</option>
                                             <?php foreach ($departemen as $row): ?>
-                                            <option value="<?= $row['id'] ?>"><?= $row['nama_departemen'] ?></option>
+                                            <option value="<?= $row['id_departemen'] ?>"><?= $row['nama_departemen'] ?></option>
                                             <?php endforeach ?>
                                         </select>
                                        <?= form_error('departemen', '<small class="text-danger pl-3">', '</small>'); ?> 

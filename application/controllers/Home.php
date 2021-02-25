@@ -59,22 +59,55 @@ class Home extends CI_Controller {
 				}
 
 			}
-			$data = [
-                'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'id_departemen' => htmlspecialchars($this->input->post('departemen', true)),
-                'nama_project' => htmlspecialchars($this->input->post('judul_project', true)),
-                'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
-                'target_project' => htmlspecialchars($this->input->post('waktu', true)),
-                'link' => htmlspecialchars($this->input->post('link', true)),
-                'id_jenis_project' => json_encode($this->input->post('jenis_project', true)),
-                'waktu_pengajuan' => time(),
-                'storyboard' => $storyboard
-            ];
+			// $data = [
+   //              'nama' => htmlspecialchars($this->input->post('nama', true)),
+   //              'id_departemen' => htmlspecialchars($this->input->post('departemen', true)),
+   //              'nama_project' => htmlspecialchars($this->input->post('judul_project', true)),
+   //              'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
+   //              'target_project' => htmlspecialchars($this->input->post('waktu', true)),
+   //              'link' => htmlspecialchars($this->input->post('link', true)),
+   //              'waktu_pengajuan' => time(),
+   //              'storyboard' => $storyboard
+   //          ];
+            $nama = htmlspecialchars($this->input->post('nama', true));
+            $id_departemen = htmlspecialchars($this->input->post('departemen', true));
+            $nama_project = htmlspecialchars($this->input->post('judul_project', true));
+            $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
+            $target_project = htmlspecialchars($this->input->post('waktu', true));
+            $link = htmlspecialchars($this->input->post('link', true));
+            $waktu_pengajuan = time();
+            $storyboards = $storyboard;
+            
+   //          $countcheck = count($this->input->post('jenis_project', true));
+   //          $datacheck = [];
+			// for ($i=0; $i < $countcheck ; $i++) {
+			// 	$dataceks = $this->input->post('jenis_project', true)[$i];
+			// 	array_push($datacheck, $dataceks);
+			// }
+
+			$a = $this->input->post('jenis_project', true);
+			$aa = array_flip($a);
+			$id_jenis_project = json_encode($aa);
+			$b = json_decode($id_jenis_project);
+
+			var_dump($id_jenis_project);
+			var_dump($b);
+			die();
+             
+
+            $this->db->set('nama', $nama);
+            $this->db->set('id_departemen', $id_departemen);
+            $this->db->set('nama_project', $nama_project);
+            $this->db->set('deskripsi', $deskripsi);
+            $this->db->set('target_project', $target_project);
+            $this->db->set('link', $link);
+            $this->db->set('waktu_pengajuan', $waktu_pengajuan);
+            $this->db->set('storyboard', $storyboards);
+            $this->db->set('id_jenis_project', $id_jenis_project);
+            $this->db->insert('pengajuan');
 
 
-            var_dump($data);
-            die();
-            // $this->db->insert('pengajuan', $data);
+
              $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Terimakasih! pengajuan project akan segera kami proses</div>');
             redirect('home');
 
