@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 11:09 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Mar 17, 2021 at 05:14 AM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.3.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `departemen` (
-  `id` int(11) NOT NULL,
+  `id_departemen` int(11) NOT NULL,
   `nama_departemen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -36,7 +36,7 @@ CREATE TABLE `departemen` (
 -- Dumping data for table `departemen`
 --
 
-INSERT INTO `departemen` (`id`, `nama_departemen`) VALUES
+INSERT INTO `departemen` (`id_departemen`, `nama_departemen`) VALUES
 (1, 'TK Karakter'),
 (2, 'SD Karakter'),
 (3, 'SMP Karakter'),
@@ -56,10 +56,10 @@ CREATE TABLE `pengajuan` (
   `id_departemen` int(11) NOT NULL,
   `nama_project` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
-  `story_board` text NOT NULL,
+  `storyboard` text NOT NULL,
   `target_project` varchar(255) NOT NULL,
   `link` text NOT NULL,
-  `id_jenis_project` text NOT NULL,
+  `id_jenis_project` longtext NOT NULL,
   `waktu_pengajuan` int(11) NOT NULL,
   `status` enum('Menunggu Diproses','Sedang Dikerjakan','Selesai') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -68,11 +68,13 @@ CREATE TABLE `pengajuan` (
 -- Dumping data for table `pengajuan`
 --
 
-INSERT INTO `pengajuan` (`id`, `nama`, `id_departemen`, `nama_project`, `deskripsi`, `story_board`, `target_project`, `link`, `id_jenis_project`, `waktu_pengajuan`, `status`) VALUES
-(8, 'Syarif', 1, 'Hari Pahlawan', 'tes', '', '2020-11-17', 'http://localhost/multimedia/home/project', '', 1605493993, 'Menunggu Diproses'),
-(9, 'Syarif', 1, 'Hari Pahlawan', 'tes', '', '2020-11-17', 'http://localhost/multimedia/home/project', '1,2,3', 1605494746, 'Menunggu Diproses'),
-(10, 'Syarif', 1, 'Hari Pahlawan', 'tes', '', '2020-11-17', 'http://localhost/multimedia/home/project', '3', 1605495695, 'Menunggu Diproses'),
-(11, 'Syarif', 1, 'Hari Pahlawan', 'tes', '', '2020-11-17', 'http://localhost/multimedia/home/project', '[\"1\",\"2\",\"3\"]', 1605495784, 'Menunggu Diproses');
+INSERT INTO `pengajuan` (`id`, `nama`, `id_departemen`, `nama_project`, `deskripsi`, `storyboard`, `target_project`, `link`, `id_jenis_project`, `waktu_pengajuan`, `status`) VALUES
+(13, 'Syarif', 2, 'Hari Pahlawan', 'tes', '15-02-21_Invoice_cctv11.pdf', '2021-02-17', 'http://localhost/multimedia/home/project', '2', 1613381590, 'Menunggu Diproses'),
+(14, 'Syarif', 1, 'Hari Pahlawan', 'tes', '15-02-21_Invoice_vga.pdf', '2021-02-18', 'http://localhost/multimedia/home/project', '[\"1\",\"2\"]', 1613382647, 'Menunggu Diproses'),
+(15, 'Syarif', 2, 'Hari Pahlawan', 'tes', '15-02-21_Invoice_wrode1.pdf', '2021-02-25', 'http://localhost/multimedia/home/project', '[\"1\",\"2\"]', 1613383768, 'Menunggu Diproses'),
+(16, 'Syarif', 3, 'Hari Pahlawan', 'tesssssssssss', '15-02-21_Invoice_wrode18.pdf', '2021-02-25', 'http://localhost/multimedia/home/project', '[\"1\",\"2\"]', 1613384709, 'Menunggu Diproses'),
+(17, 'Syarif', 3, 'Hari Pahlawan', 'asasas', '15-02-21_Invoice_Video_Capture2.pdf', '2021-02-26', 'http://localhost/multimedia/home/project', '[\"1\",\"3\"]', 1613386443, 'Menunggu Diproses'),
+(18, 'Syarif', 6, 'Hari Pahlawan', 'asasaksaksjaskjaskajskaj', '16-02-21_Lowongan_Pekerjaan_-_Global_Patra_Sinertama.pdf', '2021-02-27', 'http://localhost/multimedia/home/project', '{\"1\":0,\"3\":1}', 1613457388, 'Menunggu Diproses');
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,7 @@ INSERT INTO `project` (`id`, `jenis_project`) VALUES
 -- Indexes for table `departemen`
 --
 ALTER TABLE `departemen`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_departemen`);
 
 --
 -- Indexes for table `pengajuan`
@@ -125,13 +127,13 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `departemen`
 --
 ALTER TABLE `departemen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_departemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `project`
@@ -147,7 +149,7 @@ ALTER TABLE `project`
 -- Constraints for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  ADD CONSTRAINT `pengajuan_ibfk_1` FOREIGN KEY (`id_departemen`) REFERENCES `departemen` (`id`);
+  ADD CONSTRAINT `pengajuan_ibfk_1` FOREIGN KEY (`id_departemen`) REFERENCES `departemen` (`id_departemen`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
