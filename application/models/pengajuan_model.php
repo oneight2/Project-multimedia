@@ -12,7 +12,4 @@ class Pengajuan_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 }
-// $query = "SELECT * FROM `pengajuan` JOIN `departemen`
-//                   ON `pengajuan`.`id_departemen` = `departemen`.`id` JOIN `project` ON `pengajuan`.`id_jenis_project` = `project`.`id`
-                
-//                 ";
+

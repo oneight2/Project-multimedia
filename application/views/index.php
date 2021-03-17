@@ -9,7 +9,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Pending Project</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -25,7 +25,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Project Dikerjakan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -41,7 +41,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                         Project Selesai</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusSelesai ?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -57,7 +57,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
     </div>
     <div class="card-body">
-        <a href="<?= base_url('home/project'); ?>" class="btn btn-primary btn-md mb-2">Isi Pengajuan Project</a>
+        <a href="<?= base_url('home/project'); ?>" class="btn btn-primary btn-md mb-2 pulse-button">Isi Pengajuan Project</a>
         <?= $this->session->flashdata('message'); ?>
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Perhatian!</h4>

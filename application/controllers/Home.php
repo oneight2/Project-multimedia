@@ -17,6 +17,25 @@ class Home extends CI_Controller {
 			'departemen' => $this->db->get('departemen')->result_array(),
 			'jenis_project' => $this->db->get('project')->result_array(),
 		);
+
+		$menunggu = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Menunggu Diproses'
+                
+                ");
+		$diproses = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Sedang Dikerjakan'
+                
+                ");
+		$selesai = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Selesai'
+                
+                ");
+
+
+		$data['statusMenunggu'] = $menunggu->num_rows();
+		$data['statusDikerjakan'] = $diproses->num_rows();
+		$data['statusSelesai'] = $selesai->num_rows();
+
 		$this->load->model('Pengajuan_model', 'pengajuan');
         $data['pengajuan'] = $this->pengajuan->getPengajuan();
 
