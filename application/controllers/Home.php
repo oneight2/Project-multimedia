@@ -35,6 +35,7 @@ class Home extends CI_Controller {
 		$data['statusMenunggu'] = $menunggu->num_rows();
 		$data['statusDikerjakan'] = $diproses->num_rows();
 		$data['statusSelesai'] = $selesai->num_rows();
+		$data['waktu']=  date('d/m/Y - H:i');
 
 		$this->load->model('Pengajuan_model', 'pengajuan');
         $data['pengajuan'] = $this->pengajuan->getPengajuan();
@@ -94,7 +95,7 @@ class Home extends CI_Controller {
             $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
             $target_project = htmlspecialchars($this->input->post('waktu', true));
             $link = htmlspecialchars($this->input->post('link', true));
-            $waktu_pengajuan = time();
+            $waktu_pengajuan = date('d/m/Y - H:i');
             $storyboards = $storyboard;
             
    //          $countcheck = count($this->input->post('jenis_project', true));
@@ -107,12 +108,7 @@ class Home extends CI_Controller {
 			$a = $this->input->post('jenis_project', true);
 			$aa = array_flip($a);
 			$id_jenis_project = json_encode($aa);
-			$b = json_decode($id_jenis_project);
 
-			var_dump($id_jenis_project);
-			var_dump($b);
-			die();
-             
 
             $this->db->set('nama', $nama);
             $this->db->set('id_departemen', $id_departemen);

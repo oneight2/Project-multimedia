@@ -4,7 +4,9 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                       
+                    </div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -43,6 +45,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
+                                        <small class="text-info">Upload Storyboard</small>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="storyboard">
@@ -52,6 +55,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
+                                        <small class="text-info">Target Project</small>
                                         <input type="date" class="form-control"
                                         id="exampleRepeatPassword" placeholder="Target Project" name="waktu">
                                         <?= form_error('waktu', '<small class="text-danger pl-3">', '</small>'); ?>

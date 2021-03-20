@@ -2,8 +2,14 @@
 class Product_model extends CI_Model{
 
 	function product_list(){
-		$hasil=$this->db->get('product');
-		return $hasil->result();
+
+		$hasil= "SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` 
+                
+                ";
+        return $this->db->query($hasil)->result();
+		// $hasil=$this->db->get('product');
+		// return $hasil->result();
 	}
 
 	function save_product(){
@@ -17,22 +23,24 @@ class Product_model extends CI_Model{
 	}
 
 	function update_product(){
-		$product_code=$this->input->post('product_code');
-		$product_name=$this->input->post('product_name');
-		$product_price=$this->input->post('price');
+		$id=$this->input->post('id');
+		$status=$this->input->post('status');
 
-		$this->db->set('product_name', $product_name);
-		$this->db->set('product_price', $product_price);
-		$this->db->where('product_code', $product_code);
-		$result=$this->db->update('product');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$result=$this->db->update('pengajuan');
 		return $result;
 	}
 
 	function delete_product(){
-		$product_code=$this->input->post('product_code');
-		$this->db->where('product_code', $product_code);
-		$result=$this->db->delete('product');
+		$id=$this->input->post('id');
+		// $storyboard=$this->input->post('storyboard');
+		// unlink($storyboard);
+		$this->db->where('id', $id);
+		$result=$this->db->delete('pengajuan');
 		return $result;
+		
+
 	}
 	
 }

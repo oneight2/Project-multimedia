@@ -1,4 +1,3 @@
-<?= var_dump($pengajuan) ?>
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">

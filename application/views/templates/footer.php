@@ -3,7 +3,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Web Programming UNPAS <?= date('Y'); ?></span>
+                        <span>Copyright &copy;Indonesia Heritage Foundation<?= date('Y'); ?></span>
                     </div>
                 </div>
             </footer>
@@ -70,15 +70,20 @@
                                     dataType : 'json',
                                     success : function(data){
                                         var html = '';
+                                        var no = 1;
                                         var i;
                                         for(i=0; i<data.length; i++){
                                             html += '<tr>'+
-                                                    '<td>'+data[i].product_code+'</td>'+
-                                                    '<td>'+data[i].product_name+'</td>'+
-                                                    '<td>'+data[i].product_price+'</td>'+
+                                                    '<td>'+ no++ +'</td>'+
+                                                    '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
+                                                    '<td>'+data[i].nama_project+'</td>'+
+                                                    '<td>'+data[i].nama_departemen+'</td>'+
+                                                    '<td>'+data[i].target_project+'</td>'+
+                                                    '<td>'+data[i].nama+'</td>'+
+                                                    '<td><p class="" id="warna_status">'+data[i].status+'</p></td>'+
                                                     '<td style="text-align:right;">'+
-                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-product_code="'+data[i].product_code+'" data-product_name="'+data[i].product_name+'" data-price="'+data[i].product_price+'">Edit</a>'+' '+
-                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-product_code="'+data[i].product_code+'">Delete</a>'+
+                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="'+data[i].nama_project+'" data-deskripsi="'+data[i].deskripsi+'" data-storyboard="'+data[i].storyboard+'" data-link="'+data[i].link+'" data-id="'+data[i].id+'">Lihat</a>'+' '+
+                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'" data-storyboard="'+data[i].storyboard+'">Delete</a>'+
                                                     '</td>'+
                                                     '</tr>';
                                         }
@@ -111,30 +116,32 @@
 
                             //get data for update record
                             $('#show_data').on('click','.item_edit',function(){
-                                var product_code = $(this).data('product_code');
-                                var product_name = $(this).data('product_name');
-                                var price        = $(this).data('price');
+                                var id = $(this).data('id');
+                                var nama_project = $(this).data('nama_project');
+                                var deskripsi = $(this).data('deskripsi');
+                                var storyboard = $(this).data('storyboard');
+                                var link = $(this).data('link');
                                 
                                 $('#Modal_Edit').modal('show');
-                                $('[name="product_code_edit"]').val(product_code);
-                                $('[name="product_name_edit"]').val(product_name);
-                                $('[name="price_edit"]').val(price);
+                                $('[id="id_project"]').val(id);
+                                $('[id="nama_project_edit"]').val(nama_project);
+                                $('[id="deskripsi_edit"]').val(deskripsi);
+                                $('[id="storyboard"]').attr('href', 'assets/storyboard/'+storyboard);
+                                $('[id="link"]').attr('href', link);
                             });
 
                             //update record to database
                              $('#btn_update').on('click',function(){
-                                var product_code = $('#product_code_edit').val();
-                                var product_name = $('#product_name_edit').val();
-                                var price        = $('#price_edit').val();
+                                var id = $('#id_project').val();
+                                var status = $('#ubah_status').val();
                                 $.ajax({
                                     type : "POST",
                                     url  : "<?php echo site_url('admin/update')?>",
                                     dataType : "JSON",
-                                    data : {product_code:product_code , product_name:product_name, price:price},
+                                    data : {id:id , status:status},
                                     success: function(data){
-                                        $('[name="product_code_edit"]').val("");
-                                        $('[name="product_name_edit"]').val("");
-                                        $('[name="price_edit"]').val("");
+                                        $('[id="id_project"]').val("");
+                                        $('[id="ubah_status"]').val("");
                                         $('#Modal_Edit').modal('hide');
                                         show_product();
                                     }
@@ -144,28 +151,43 @@
 
                             //get data for delete record
                             $('#show_data').on('click','.item_delete',function(){
-                                var product_code = $(this).data('product_code');
+                                var id = $(this).data('id');
+                                var storyboard = $(this).data('storyboard');
                                 
                                 $('#Modal_Delete').modal('show');
-                                $('[name="product_code_delete"]').val(product_code);
+                                $('[id="id_delete"]').val(id);
+                                $('[id="storyboard_delete"]').val(storyboard);
                             });
 
                             //delete record to database
                              $('#btn_delete').on('click',function(){
-                                var product_code = $('#product_code_delete').val();
+                                var id = $('#id_delete').val();
+                                var storyboard = $('#storyboard_delete').val();
                                 $.ajax({
                                     type : "POST",
                                     url  : "<?php echo site_url('admin/delete')?>",
                                     dataType : "JSON",
-                                    data : {product_code:product_code},
+                                    data : {id:id, storyboard:storyboard},
                                     success: function(data){
-                                        $('[name="product_code_delete"]').val("");
+                                        $('[id="id_delete"]').val("");
+                                        $('[id="storyboard_delete"]').val("");
                                         $('#Modal_Delete').modal('hide');
                                         show_product();
                                     }
                                 });
                                 return false;
                             });
+
+                             // Warna status
+                             var warna=$('#warna_status').text();
+                             console.log(warna)
+                             if(warna === 'Menunggu Proses'){
+                                $('#warna_status').attr('class', 'badge badge-primary')
+                             }else if (warna === 'Sedang Dikerjakan'){
+                                $('#warna_status').attr('class', 'badge badge-warning')
+                             }else if(warna === 'Selesai'){
+                                $('#warna_status').attr('class', 'badge badge-success')
+                             }
 
                         });
             </script>

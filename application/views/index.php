@@ -74,7 +74,7 @@
                         <th>Target Project</th>
                         <th>Nama Pengaju</th>
                         <th>Status</th>
-                        <th>Eksekusi</th>
+                        <!-- <th>Eksekusi</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -82,13 +82,21 @@
                     <?php foreach ($pengajuan as $row): ?>
                     <tr>
                         <td><?= $no++ ?></td>
-                        <td><b class="text-danger"><?= date('d/m/Y - H:i', $row['waktu_pengajuan']); ?></b></td>
+                        <td><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
                         <td><?= $row['nama_project'] ?></td>
                         <td><?= $row['nama_departemen'] ?></td>
                         <td><?= $row['target_project'] ?></td>
                         <td><?= $row['nama'] ?></td>
-                        <td><span class="badge badge-primary"><?= $row['status'] ?></span></td>
-                        <td>$112,000</td>
+                        <td><p class="<?php 
+                                if($row['status'] == 'Menunggu Diproses'){
+                                    echo 'badge badge-primary';
+                                } else if($row['status'] == 'Sedang Dikerjakan'){
+                                    echo 'badge badge-warning';
+                                } else{
+                                    echo 'badge badge-success';
+                                }
+                         ?>" id="warna_status"><?= $row['status'] ?></p></td>
+                        <!-- <td>$112,000</td> -->
                     </tr>
                     <?php endforeach ?>
                 </tbody>
