@@ -4,7 +4,7 @@ class Product_model extends CI_Model{
 	function product_list(){
 
 		$hasil= "SELECT * FROM `pengajuan` JOIN `departemen`
-                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` 
+					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
                 
                 ";
         return $this->db->query($hasil)->result();
@@ -25,8 +25,10 @@ class Product_model extends CI_Model{
 	function update_product(){
 		$id=$this->input->post('id');
 		$status=$this->input->post('status');
+		$id_pegawai=$this->input->post('id_pegawai');
 
 		$this->db->set('status', $status);
+		$this->db->set('id_pegawai', $id_pegawai);
 		$this->db->where('id', $id);
 		$result=$this->db->update('pengajuan');
 		return $result;
@@ -39,8 +41,12 @@ class Product_model extends CI_Model{
 		$this->db->where('id', $id);
 		$result=$this->db->delete('pengajuan');
 		return $result;
-		
+	}
 
+	function data_pegawai(){
+
+		$hasil=$this->db->get('pegawai');
+		return $hasil->result();
 	}
 	
 }

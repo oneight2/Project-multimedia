@@ -57,11 +57,11 @@
         <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
     </div>
     <div class="card-body">
-        <a href="<?= base_url('home/project'); ?>" class="btn btn-primary btn-md mb-2 pulse-button">Isi Pengajuan Project</a>
+        <a href="<?= base_url('home/project'); ?>" class="btn btn-primary btn-md mb-2 pulse-button border">Isi Pengajuan Project</a>
         <?= $this->session->flashdata('message'); ?>
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Perhatian!</h4>
-            <p>Project dikerjakan berdasarkan urutan waktu pengisian form pengajuan</p>
+            <p>Project dikerjakan berdasarkan urutan waktu pengisian form pengajuan. <br>Butuh bantuan tim multimedia? <button  class="badge badge-warning" style="border:none"data-toggle="modal" data-target="#kontakModal">Hubungi disini</button></p>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered pengajuan" id="dataTable" width="100%" cellspacing="0">
@@ -74,6 +74,7 @@
                         <th>Target Project</th>
                         <th>Nama Pengaju</th>
                         <th>Status</th>
+                        <th>Eksekusi</th>
                         <!-- <th>Eksekusi</th> -->
                     </tr>
                 </thead>
@@ -96,7 +97,7 @@
                                     echo 'badge badge-success';
                                 }
                          ?>" id="warna_status"><?= $row['status'] ?></p></td>
-                        <!-- <td>$112,000</td> -->
+                        <td><?= $row['nama_pegawai']?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -106,3 +107,42 @@
 </div>
 </div>
 <!-- /.container-fluid -->
+
+<!-- Modal -->
+<div class="modal fade" id="kontakModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Daftar Kontak</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Nama</th>
+                <th scope="col">Chat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($kontak as $row):?>
+                <tr>
+                 <td><?= $row['nama_pegawai'] ?></td>
+                 <td>
+                     <a href="https://api.whatsapp.com/send?phone=<?= $row['no_telp'] ?>" class="btn btn-success btn-circle">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    </td>
+                </tr>
+                <?php endforeach?>
+            </tbody>
+            </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

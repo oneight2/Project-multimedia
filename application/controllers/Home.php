@@ -39,6 +39,7 @@ class Home extends CI_Controller {
 
 		$this->load->model('Pengajuan_model', 'pengajuan');
         $data['pengajuan'] = $this->pengajuan->getPengajuan();
+        $data['kontak'] = $this->pengajuan->getkontak();
 
 		$this->load->view('templates/auth_header', $data); 
 		$this->load->view('index', $data); 
@@ -79,16 +80,7 @@ class Home extends CI_Controller {
 				}
 
 			}
-			// $data = [
-   //              'nama' => htmlspecialchars($this->input->post('nama', true)),
-   //              'id_departemen' => htmlspecialchars($this->input->post('departemen', true)),
-   //              'nama_project' => htmlspecialchars($this->input->post('judul_project', true)),
-   //              'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
-   //              'target_project' => htmlspecialchars($this->input->post('waktu', true)),
-   //              'link' => htmlspecialchars($this->input->post('link', true)),
-   //              'waktu_pengajuan' => time(),
-   //              'storyboard' => $storyboard
-   //          ];
+			
             $nama = htmlspecialchars($this->input->post('nama', true));
             $id_departemen = htmlspecialchars($this->input->post('departemen', true));
             $nama_project = htmlspecialchars($this->input->post('judul_project', true));
@@ -98,12 +90,6 @@ class Home extends CI_Controller {
             $waktu_pengajuan = date('d/m/Y - H:i');
             $storyboards = $storyboard;
             
-   //          $countcheck = count($this->input->post('jenis_project', true));
-   //          $datacheck = [];
-			// for ($i=0; $i < $countcheck ; $i++) {
-			// 	$dataceks = $this->input->post('jenis_project', true)[$i];
-			// 	array_push($datacheck, $dataceks);
-			// }
 
 			$a = $this->input->post('jenis_project', true);
 			$aa = array_flip($a);

@@ -1,30 +1,28 @@
-<div class="container-fluid">
-    <div class="row mt-2">
-        
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Pending Project</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+<div class="row mt-2"> 
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Pending Project</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Project Dikerjakan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -34,63 +32,29 @@
             </div>
         </div>
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Project Selesai</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                        Project Selesai</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusSelesai ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- DataTales Example -->
+</div>
+   <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <!-- Yang sebelum ajax -->
-                <!-- <table class="table table-bordered pengajuan" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Waktu Pengajuan</th>
-                            <th>Nama Project</th>
-                            <th>Departemen</th>
-                            <th>Target Project</th>
-                            <th>Nama Pengaju</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no=1; ?>
-                        <?php foreach ($pengajuan as $row): ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><b class="text-danger"><?= date('d/m/Y - H:i', $row['waktu_pengajuan']); ?></b></td>
-                            <td><?= $row['nama_project'] ?></td>
-                            <td><?= $row['nama_departemen'] ?></td>
-                            <td><?= $row['target_project'] ?></td>
-                            <td><?= $row['nama'] ?></td>
-                            <td><span class="badge badge-primary"><?= $row['status'] ?></span></td>
-                            <td>
-                                <a href="<?= base_url('admin/viewdata/').$row['id']?>"><span class="badge badge-primary">Lihat</span></a>
-                                <a href=""><span class="badge badge-danger">Hapus</span></a>
-                            </td>
-                        </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table> -->
-                <!-- yang sebelum ajax -->
                 <table class="table table-striped" id="mydata">
                     <thead>
                         <tr>
@@ -113,53 +77,14 @@
     </div>
 </div>
 <!-- /.container-fluid -->
-<!-- MODAL ADD -->
-<form>
-    <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Product Code</label>
-                        <div class="col-md-10">
-                            <input type="text" name="product_code" id="product_code" class="form-control" placeholder="Product Code">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Product Name</label>
-                        <div class="col-md-10">
-                            <input type="text" name="product_name" id="product_name" class="form-control" placeholder="Product Name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Price</label>
-                        <div class="col-md-10">
-                            <input type="text" name="price" id="price" class="form-control" placeholder="Price">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" type="submit" id="btn_save" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-<!--END MODAL ADD-->
+
 <!-- MODAL EDIT -->
 <form>
     <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -193,6 +118,14 @@
                                 <option value="Menunggu Diproses">Menunggu Diproses</option>
                                 <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
                                 <option value="Selesai">Selesai</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Eksekusi</label>
+                        <div class="col-md-10">
+                            <select class="custom-select" id="show_pegawai">
+                                
                             </select>
                         </div>
                     </div>
@@ -231,3 +164,231 @@
     </div>
 </form>
 <!--END MODAL DELETE-->
+
+
+<!-- FOOTER -->
+</div>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy;Indonesia Heritage Foundation<?= date('Y'); ?></span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bootstrap core JavaScript-->
+           <!--  <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
+            <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/jquery-3.2.1.js'?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/bootstrap.js'?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/jquery.dataTables.js'?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/dataTables.bootstrap4.js'?>"></script>
+
+            <!-- Core plugin JavaScript-->
+            <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+
+            <!-- Custom scripts for all pages-->
+            <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+            
+
+
+            <script>
+              $(document).ready(function(){
+                            show_product(); //call function show all product
+                            
+                            $('#mydata').dataTable();
+                             
+                            //function show all product
+                            function show_product(){
+                                $.ajax({
+                                    type  : 'ajax',
+                                    url   : '<?php echo site_url('admin/product_data')?>',
+                                    async : false,
+                                    dataType : 'json',
+                                    success : function(data){
+                                        var html = '';
+                                        var no = 1;
+                                        var i;
+                                        for(i=0; i<data.length; i++){
+                                            html += '<tr>'+
+                                                    '<td>'+ no++ +'</td>'+
+                                                    '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
+                                                    '<td>'+data[i].nama_project+'</td>'+
+                                                    '<td>'+data[i].nama_departemen+'</td>'+
+                                                    '<td>'+data[i].target_project+'</td>'+
+                                                    '<td>'+data[i].nama+'</td>'+
+                                                    '<td><p class="" id="warna_status">'+data[i].status+'</p></td>'+
+                                                    '<td style="text-align:right;">'+
+                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="'+data[i].nama_project+'" data-deskripsi="'+data[i].deskripsi+'" data-storyboard="'+data[i].storyboard+'" data-link="'+data[i].link+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
+                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'" data-storyboard="'+data[i].storyboard+'"><i class="fas fa-trash"></i></a>'+
+                                                    '</td>'+
+                                                    '</tr>';
+                                        }
+                                        $('#show_data').html(html);
+                                    }
+
+                                });
+                            }
+
+                            //Save product
+                            $('#btn_save').on('click',function(){
+                                var product_code = $('#product_code').val();
+                                var product_name = $('#product_name').val();
+                                var price        = $('#price').val();
+                                $.ajax({
+                                    type : "POST",
+                                    url  : "<?php echo site_url('admin/save')?>",
+                                    dataType : "JSON",
+                                    data : {product_code:product_code , product_name:product_name, price:price},
+                                    success: function(data){
+                                        $('[name="product_code"]').val("");
+                                        $('[name="product_name"]').val("");
+                                        $('[name="price"]').val("");
+                                        $('#Modal_Add').modal('hide');
+                                        show_product();
+                                    }
+                                });
+                                return false;
+                            });
+
+                            //get data for update record
+                            $('#show_data').on('click','.item_edit',function(){
+                                // showselectpegawai
+                                showPegawai();
+
+                                var id = $(this).data('id');
+                                var nama_project = $(this).data('nama_project');
+                                var deskripsi = $(this).data('deskripsi');
+                                var storyboard = $(this).data('storyboard');
+                                var link = $(this).data('link');
+
+
+                                
+                                $('#Modal_Edit').modal('show');
+                                $('[id="id_project"]').val(id);
+                                $('[id="nama_project_edit"]').val(nama_project);
+                                $('[id="deskripsi_edit"]').val(deskripsi);
+                                $('[id="storyboard"]').attr('href', 'assets/storyboard/'+storyboard);
+                                $('[id="link"]').attr('href', link);
+                            });
+
+                            // Fungsi SHow select pegawai
+                            function showPegawai(){
+                                $.ajax({
+                                    type  : 'ajax',
+                                    url   : '<?php echo site_url('admin/data_pegawai')?>',
+                                    async : false,
+                                    dataType : 'json',
+                                    success : function(data){
+                                        var html = '';
+                                        var no = 1;
+                                        var i;
+                                        for(i=0; i<data.length; i++){
+                                            html += 
+                                                    '<option value="'+data[i].id_pegawai+'">'+data[i].nama_pegawai+'</option>';
+                                        }
+                                        $('#show_pegawai').html(html);
+                                    }
+
+                                });
+                            }
+
+                            //update record to database
+                             $('#btn_update').on('click',function(){
+                                var id = $('#id_project').val();
+                                var status = $('#ubah_status').val();
+                                var id_pegawai = $('#show_pegawai').val();
+                                $.ajax({
+                                    type : "POST",
+                                    url  : "<?php echo site_url('admin/update')?>",
+                                    dataType : "JSON",
+                                    data : {id:id , status:status, id_pegawai:id_pegawai},
+                                    success: function(data){
+                                        $('[id="id_project"]').val("");
+                                        $('[id="ubah_status"]').val("");
+                                        $('[id="show_pegawai"]').val("");
+                                        $('#Modal_Edit').modal('hide');
+                                        show_product();
+                                    }
+                                });
+                                return false;
+                            });
+
+                            //get data for delete record
+                            $('#show_data').on('click','.item_delete',function(){
+                                var id = $(this).data('id');
+                                var storyboard = $(this).data('storyboard');
+                                
+                                $('#Modal_Delete').modal('show');
+                                $('[id="id_delete"]').val(id);
+                                $('[id="storyboard_delete"]').val(storyboard);
+                            });
+
+                            //delete record to database
+                             $('#btn_delete').on('click',function(){
+                                var id = $('#id_delete').val();
+                                var storyboard = $('#storyboard_delete').val();
+                                $.ajax({
+                                    type : "POST",
+                                    url  : "<?php echo site_url('admin/delete')?>",
+                                    dataType : "JSON",
+                                    data : {id:id, storyboard:storyboard},
+                                    success: function(data){
+                                        $('[id="id_delete"]').val("");
+                                        $('[id="storyboard_delete"]').val("");
+                                        $('#Modal_Delete').modal('hide');
+                                        show_product();
+                                    }
+                                });
+                                return false;
+                            });
+
+                             // Warna status
+                             var warna=$('#warna_status').text();
+                             console.log(warna)
+                             if(warna === 'Menunggu Proses'){
+                                $('#warna_status').attr('class', 'badge badge-primary')
+                             }else if (warna === 'Sedang Dikerjakan'){
+                                $('#warna_status').attr('class', 'badge badge-warning')
+                             }else if(warna === 'Selesai'){
+                                $('#warna_status').attr('class', 'badge badge-success')
+                             }
+
+                        });
+            </script>
+
+            </body>
+
+            </html>

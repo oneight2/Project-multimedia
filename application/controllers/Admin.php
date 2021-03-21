@@ -15,16 +15,30 @@ class Admin extends CI_Controller
 	{
 		$data = array(
 			'title' => "Admin",
-			// 'departemen' => $this->db->get('departemen')->result_array(),
-			// 'jenis_project' => $this->db->get('project')->result_array(),
 		);
-		// $this->load->model('Pengajuan_model', 'pengajuan');
-		// $data['pengajuan'] = $this->pengajuan->getPengajuan();
+
+		$menunggu = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Menunggu Diproses'
+                
+                ");
+		$diproses = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Sedang Dikerjakan'
+                
+                ");
+		$selesai = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Selesai'
+                
+                ");
+
+
+		$data['statusMenunggu'] = $menunggu->num_rows();
+		$data['statusDikerjakan'] = $diproses->num_rows();
+		$data['statusSelesai'] = $selesai->num_rows();
+		
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard', $data);
-		$this->load->view('templates/footer', $data);
 	}
 
 	function product_data(){
@@ -47,36 +61,9 @@ class Admin extends CI_Controller
 		echo json_encode($data);
 	}
 
+	function data_pegawai(){
+		$data=$this->product_model->data_pegawai();
+		echo json_encode($data);
+	}
 
-
-
-
-
-
-	// public function index()
-	// {
-	// 	$data = array(
-	// 		'title' => "Admin",
-	// 		'departemen' => $this->db->get('departemen')->result_array(),
-	// 		'jenis_project' => $this->db->get('project')->result_array(),
-	// 	);
-	// 	$this->load->model('Pengajuan_model', 'pengajuan');
-	// 	$data['pengajuan'] = $this->pengajuan->getPengajuan();
-
-	// 	$this->load->view('templates/header', $data);
-	// 	$this->load->view('templates/sidebar', $data);
-	// 	$this->load->view('dashboard', $data);
-	// 	$this->load->view('templates/footer', $data);
-	// }
-
-	// public function viewdata($id)
-	// {
-	// 	$data['title'] = 'Lihat Data';
-	// 	$data['pengajuan'] = $this->db->get_where('pengajuan', ['id' => $id])->row_array();
-
-	// 	$this->load->view('templates/header', $data);
-	// 	$this->load->view('templates/sidebar', $data);
-	// 	$this->load->view('view_pengajuan', $data);
-	// 	$this->load->view('templates/footer', $data);
-	// }
 }
