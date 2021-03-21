@@ -82,13 +82,13 @@
                     <?php $no=1; ?>
                     <?php foreach ($pengajuan as $row): ?>
                     <tr>
-                        <td><?= $no++ ?></td>
-                        <td><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
-                        <td><?= $row['nama_project'] ?></td>
-                        <td><?= $row['nama_departemen'] ?></td>
-                        <td><?= $row['target_project'] ?></td>
-                        <td><?= $row['nama'] ?></td>
-                        <td><p class="<?php 
+                        <td class="pb-0"><?= $no++ ?></td>
+                        <td class="pb-0"><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
+                        <td class="pb-0"><?= $row['nama_project'] ?></td>
+                        <td class="pb-0"><?= $row['nama_departemen'] ?></td>
+                        <td class="pb-0"><?= $row['target_project'] ?></td>
+                        <td class="pb-0"><?= $row['nama'] ?></td>
+                        <td class="pb-0"><p class="<?php 
                                 if($row['status'] == 'Menunggu Diproses'){
                                     echo 'badge badge-primary';
                                 } else if($row['status'] == 'Sedang Dikerjakan'){
