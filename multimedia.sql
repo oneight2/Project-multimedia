@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 08:11 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Mar 21, 2021 at 09:33 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.3.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,11 +51,24 @@ INSERT INTO `departemen` (`id_departemen`, `nama_departemen`) VALUES
 --
 
 CREATE TABLE `pegawai` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(250) NOT NULL,
+  `id_pegawai` int(11) NOT NULL,
+  `nama_pegawai` varchar(250) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
-  `foto` text NOT NULL
+  `foto` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `no_telp`, `foto`) VALUES
+(1, 'Belum ada', '', NULL),
+(2, 'Abdul', '082113051350', 'default.jpg'),
+(3, 'Bayu', '083134468863', 'default.jpg'),
+(4, 'Syarif Hidayat', '089699838615', 'default.jpg'),
+(5, 'Dahlan', '081297584571', 'default.jpg'),
+(6, 'Fea', '081219215065', 'default.jpg'),
+(11, 'Halim', '085234151406', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -112,7 +125,7 @@ ALTER TABLE `departemen`
 -- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_pegawai`);
 
 --
 -- Indexes for table `pengajuan`
@@ -142,13 +155,13 @@ ALTER TABLE `departemen`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `project`
@@ -165,7 +178,7 @@ ALTER TABLE `project`
 --
 ALTER TABLE `pengajuan`
   ADD CONSTRAINT `pengajuan_ibfk_1` FOREIGN KEY (`id_departemen`) REFERENCES `departemen` (`id_departemen`),
-  ADD CONSTRAINT `pengajuan_ibfk_2` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id`);
+  ADD CONSTRAINT `pengajuan_ibfk_2` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

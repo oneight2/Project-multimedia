@@ -13,7 +13,7 @@ class Home extends CI_Controller {
 
 	public function index() {
 		$data = array(
-			'title' => "Beranda",
+			'title' => "Multimedia",
 			'departemen' => $this->db->get('departemen')->result_array(),
 			'jenis_project' => $this->db->get('project')->result_array(),
 		);
@@ -37,7 +37,7 @@ class Home extends CI_Controller {
 		$data['statusSelesai'] = $selesai->num_rows();
 		$data['waktu']=  date('d/m/Y - H:i');
 
-		$this->load->model('Pengajuan_model', 'pengajuan');
+		$this->load->model('pengajuan_model', 'pengajuan');
         $data['pengajuan'] = $this->pengajuan->getPengajuan();
         $data['kontak'] = $this->pengajuan->getkontak();
 
@@ -48,7 +48,7 @@ class Home extends CI_Controller {
 
 	public function project(){
 		$data = array(
-			'title' => "Home",
+			'title' => "Multimedia",
 			'departemen' => $this->db->get('departemen')->result_array(),
 			'jenis_project' => $this->db->get('project')->result_array(),
 		);
@@ -65,6 +65,7 @@ class Home extends CI_Controller {
 			$this->load->view('templates/auth_footer', $data); 
 		} else {
 			$storyboard = $_FILES['storyboard'];
+
 			if($storyboard=''){}else{
 				$config['upload_path'] = './assets/storyboard';
                 $config['allowed_types'] = 'pdf|doc|docx|jpg|png';
@@ -83,12 +84,14 @@ class Home extends CI_Controller {
 			
             $nama = htmlspecialchars($this->input->post('nama', true));
             $id_departemen = htmlspecialchars($this->input->post('departemen', true));
+            $id_pegawai = 1;
             $nama_project = htmlspecialchars($this->input->post('judul_project', true));
             $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
             $target_project = htmlspecialchars($this->input->post('waktu', true));
             $link = htmlspecialchars($this->input->post('link', true));
             $waktu_pengajuan = date('d/m/Y - H:i');
             $storyboards = $storyboard;
+
             
 
 			$a = $this->input->post('jenis_project', true);
@@ -98,6 +101,7 @@ class Home extends CI_Controller {
 
             $this->db->set('nama', $nama);
             $this->db->set('id_departemen', $id_departemen);
+            $this->db->set('id_pegawai', $id_pegawai);
             $this->db->set('nama_project', $nama_project);
             $this->db->set('deskripsi', $deskripsi);
             $this->db->set('target_project', $target_project);

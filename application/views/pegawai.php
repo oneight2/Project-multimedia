@@ -200,10 +200,11 @@
                             //function show all product
                             function show_product(){
                                 $.ajax({
-                                    type  : 'ajax',
+                                    type  : 'GET',
                                     url   : '<?php echo site_url('pegawai/product_data')?>',
                                     async : false,
                                     dataType : 'json',
+                                    contentType: "application/json",
                                     success : function(data){
                                         var html = '';
                                         var no = 1;
