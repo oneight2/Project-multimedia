@@ -48,8 +48,8 @@
                                         <small class="text-info">Upload Storyboard</small>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="storyboard">
-                                                <label class="custom-file-label" for="inputGroupFile01">StoryBoard</label>
+                                                <input type="file" class="custom-file-input" id="upload-storyboard" aria-describedby="inputGroupFileAddon01" name="storyboard">
+                                                <label class="custom-file-label" for="upload-storyboard">Pilih Berkas</label>
                                                 <?= form_error('storyboard', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
                                         </div>

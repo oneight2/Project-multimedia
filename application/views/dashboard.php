@@ -210,8 +210,6 @@
             </div>
 
             <!-- Bootstrap core JavaScript-->
-           <!--  <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
-            <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
             <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/jquery-3.2.1.js'?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/bootstrap.js'?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/jquery.dataTables.js'?>"></script>
@@ -239,7 +237,8 @@
                                     async : false,
                                     dataType : 'json',
                                     contentType: "application/json",
-                                    success : function(data){
+                                    success : function(data){                               
+                                        
                                         var html = '';
                                         var no = 1;
                                         var i;
@@ -251,13 +250,17 @@
                                                     '<td>'+data[i].nama_departemen+'</td>'+
                                                     '<td>'+data[i].target_project+'</td>'+
                                                     '<td>'+data[i].nama+'</td>'+
-                                                    '<td><p class="" id="warna_status">'+data[i].status+'</p></td>'+
+                                                    '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
                                                     '<td style="text-align:right;">'+
                                                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="'+data[i].nama_project+'" data-deskripsi="'+data[i].deskripsi+'" data-storyboard="'+data[i].storyboard+'" data-link="'+data[i].link+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
                                                         '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'" data-storyboard="'+data[i].storyboard+'"><i class="fas fa-trash"></i></a>'+
                                                     '</td>'+
                                                     '</tr>';
+
+                                                   
                                         }
+                                         
+
                                         $('#show_data').html(html);
                                     }
 
@@ -378,18 +381,18 @@
                                 });
                                 return false;
                             });
+                              // Warna status
+                                
+                                 if(($('.warna_status').text()) === 'Menunggu Proses'){
+                                    $('.warna_status').addClass('badge badge-primary')
+                                 }else if (($('.warna_status').text())=== 'Sedang Dikerjakan'){
+                                    $('.warna_status').addClass('badge badge-warning')
+                                 }else if(($('.warna_status').text()) === 'Selesai'){
+                                    $('.warna_status').addClass('badge badge-success')
+                                 }
 
-                             // Warna status
-                             var warna=$('#warna_status').text();
-                             console.log(warna)
-                             if(warna === 'Menunggu Proses'){
-                                $('#warna_status').attr('class', 'badge badge-primary')
-                             }else if (warna === 'Sedang Dikerjakan'){
-                                $('#warna_status').attr('class', 'badge badge-warning')
-                             }else if(warna === 'Selesai'){
-                                $('#warna_status').attr('class', 'badge badge-success')
-                             }
 
+                             
                         });
             </script>
 

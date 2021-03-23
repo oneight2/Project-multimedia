@@ -57,7 +57,6 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules('judul_project', 'Nama Project', 'trim|required');
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi Project', 'trim|required');
 		$this->form_validation->set_rules('waktu', 'Target Waktu Project', 'trim|required');
-		$this->form_validation->set_rules('link', 'Link Contoh Project', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('templates/auth_header', $data); 
