@@ -26,8 +26,13 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/pegawai') ?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-users"></i>
             <span>Daftar Pegawai</span></a>
+    </li>
+     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('/departemen') ?>">
+            <i class="far fa-building"></i>
+            <span>Daftar Departemen</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

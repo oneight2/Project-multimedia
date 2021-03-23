@@ -250,7 +250,7 @@
                                                     '<td>'+data[i].nama_departemen+'</td>'+
                                                     '<td>'+data[i].target_project+'</td>'+
                                                     '<td>'+data[i].nama+'</td>'+
-                                                    '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
+                                                    '<td><p class="warna_status '+show_status()+'" >'+data[i].status+'</p></td>'+
                                                     '<td style="text-align:right;">'+
                                                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="'+data[i].nama_project+'" data-deskripsi="'+data[i].deskripsi+'" data-storyboard="'+data[i].storyboard+'" data-link="'+data[i].link+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
                                                         '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'" data-storyboard="'+data[i].storyboard+'"><i class="fas fa-trash"></i></a>'+
@@ -262,9 +262,27 @@
                                          
 
                                         $('#show_data').html(html);
+                                        
                                     }
 
                                 });
+                            }
+
+                            function show_status(){
+                                 // Warna status
+
+                                 var warna = $('.warna_status').text();
+                                 console.log(warna)
+                                
+                                 if(warna == 'Menunggu Proses'){
+                                    $('.warna_status').addClass('badge badge-primary')
+                                 }else if (warna == 'Sedang Dikerjakan'){
+                                    $('.warna_status').addClass('badge badge-warning')
+                                 }else if(warna == 'Selesai'){
+                                    $('.warna_status').addClass('badge badge-success')
+                                 }
+
+
                             }
 
                             //Save product
@@ -381,16 +399,7 @@
                                 });
                                 return false;
                             });
-                              // Warna status
-                                
-                                 if(($('.warna_status').text()) === 'Menunggu Proses'){
-                                    $('.warna_status').addClass('badge badge-primary')
-                                 }else if (($('.warna_status').text())=== 'Sedang Dikerjakan'){
-                                    $('.warna_status').addClass('badge badge-warning')
-                                 }else if(($('.warna_status').text()) === 'Selesai'){
-                                    $('.warna_status').addClass('badge badge-success')
-                                 }
-
+                             
 
                              
                         });

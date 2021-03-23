@@ -2,7 +2,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4 mt-5">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pegawai Divisi Multimedia</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Departemen</h6>
         </div>
         <div class="card-body">
         <a href="javascript:void(0);" class="btn btn-primary btn-sm ml-3 mb-4" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Tambah Data</a>
@@ -11,9 +11,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>No Whatsapp</th>
-                            <th>Foto</th>
+                            <th>Nama Departemen</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,21 +37,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Nama</label>
+                        <label class="col-md-2 col-form-label">Nama Departemen</label>
                         <div class="col-md-10">
-                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Pegawai">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">No whatsapp</label>
-                        <div class="col-md-10">
-                            <input type="number" name="no_wa" id="no_wa" class="form-control" placeholder="No Whatsapp">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Foto</label>
-                        <div class="col-md-10">
-                            <input type="file" name="foto" id="foto" class="form-control" placeholder="Foto">
+                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Departemen">
                         </div>
                     </div>
                 </div>
@@ -72,29 +58,17 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Pegawai</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Departemen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Nama Pegawai</label>
+                        <label class="col-md-2 col-form-label">Nama Departemen</label>
                         <div class="col-md-10">
-                            <input type="text" id="id_pegawai" class="form-control"  hidden>
-                            <input type="text" name="nama_edit" id="nama_edit" class="form-control" placeholder="Nama pegawai">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">No Whatsapp</label>
-                        <div class="col-md-10">
-                            <input type="number" name="notelp_edit" id="notelp_edit" class="form-control" placeholder="No Whatsapp">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Foto</label>
-                        <div class="col-md-10">
-                            <input type="text" name="foto_edit" id="foto_edit" class="form-control" placeholder="Foto">
+                            <input type="text" id="id_departemen" class="form-control"  hidden>
+                            <input type="text" name="nama_edit" id="nama_edit" class="form-control" placeholder="Nama Departemen">
                         </div>
                     </div>
                 </div>
@@ -113,7 +87,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Pegawai</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Departemen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -201,7 +175,7 @@
                             function show_product(){
                                 $.ajax({
                                     type  : 'GET',
-                                    url   : '<?php echo site_url('pegawai/product_data')?>',
+                                    url   : '<?php echo site_url('departemen/product_data')?>',
                                     async : false,
                                     dataType : 'json',
                                     contentType: "application/json",
@@ -209,15 +183,13 @@
                                         var html = '';
                                         var no = 1;
                                         var i;
-                                        for(i=1; i<data.length; i++){
+                                        for(i=0; i<data.length; i++){
                                             html += '<tr>'+
                                                     '<td>'+ no++ +'</td>'+
-                                                    '<td>'+data[i].nama_pegawai+'</td>'+
-                                                    '<td>'+data[i].no_telp+'</td>'+
-                                                    '<td><img class="img-profile rounded-circle" style="width:50px" src="<?= base_url("assets/img/")?>'+data[i].foto+'"></td>'+
+                                                    '<td>'+data[i].nama_departemen+'</td>'+
                                                     '<td style="text-align:right;">'+
-                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_pegawai="'+data[i].nama_pegawai+'" data-no_telp="'+data[i].no_telp+'" data-foto="'+data[i].foto+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-edit"></i></a>'+' '+
-                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id_pegawai="'+data[i].id_pegawai+'" ><i class="fas fa-trash"></i></a>'+
+                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_departemen="'+data[i].nama_departemen+'" data-id_departemen='+data[i].id_departemen+'><i class="fas fa-edit"></i></a>'+' '+
+                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id_departemen="'+data[i].id_departemen+'" ><i class="fas fa-trash"></i></a>'+
                                                     '</td>'+
                                                     '</tr>';
                                         }
@@ -229,19 +201,15 @@
 
                             //Save product
                             $('#btn_save').on('click',function(){
-                                var nama_pegawai = $('#nama').val();
-                                var no_telp = $('#no_wa').val();
-                                var foto  = 'default.jpg';
-                                console.log(no_telp)
+                                var nama_departemen = $('#nama').val();;
+                                console.log(nama_departemen)
                                 $.ajax({
                                     type : "POST",
-                                    url  : "<?php echo site_url('pegawai/save')?>",
+                                    url  : "<?php echo site_url('departemen/save')?>",
                                     dataType : "JSON",
-                                    data : {nama_pegawai:nama_pegawai , no_telp:no_telp, foto:foto},
+                                    data : {nama_departemen:nama_departemen},
                                     success: function(data){
                                         $('[id="nama"]').val("");
-                                        $('[id="no_wa"]').val("");
-                                        // $('[id="foto"]').val("");
                                         $('#Modal_Add').modal('hide');
                                         show_product();
                                     }
@@ -251,34 +219,27 @@
 
                             //get data for update record
                             $('#show_data').on('click','.item_edit',function(){
-                                var id_pegawai = $(this).data('id_pegawai');
-                                var nama_pegawai = $(this).data('nama_pegawai');
-                                var no_telp = $(this).data('no_telp');
-                                var foto = $(this).data('foto');
+                                var id_departemen = $(this).data('id_departemen');
+                                var nama_departemen = $(this).data('nama_departemen');
                                 
                                 $('#Modal_Edit').modal('show');
-                                $('[id="id_pegawai"]').val(id_pegawai);
-                                $('[id="nama_edit"]').val(nama_pegawai);
-                                $('[id="notelp_edit"]').val(no_telp);
-                                $('[id="foto_edit"]').val(foto);
+                                $('[id="id_departemen"]').val(id_departemen);
+                                $('[id="nama_edit"]').val(nama_departemen);
                             });
 
                             //update record to database
                              $('#btn_update').on('click',function(){
-                                var id_pegawai = $('#id_pegawai').val();
-                                var nama_pegawai = $('#nama_edit').val();
-                                var no_telp = $('#notelp_edit').val();
-                                var foto = $('#foto_edit').val();
+                                var id_departemen = $('#id_departemen').val();
+                                var nama_departemen = $('#nama_edit').val();
+                                console.log(id_departemen)
                                 $.ajax({
                                     type : "POST",
-                                    url  : "<?php echo site_url('pegawai/update')?>",
+                                    url  : "<?php echo site_url('departemen/update')?>",
                                     dataType : "JSON",
-                                    data : {id_pegawai:id_pegawai , nama_pegawai:nama_pegawai, no_telp:no_telp, foto:foto},
+                                    data : {id_departemen:id_departemen , nama_departemen:nama_departemen},
                                     success: function(data){
-                                        $('[id="id_pegawai"]').val("");
+                                        $('[id="id_departemen"]').val("");
                                         $('[id="nama_edit"]').val("");
-                                        $('[id="notelp_edit"]').val("");
-                                        $('[id="foto_edit"]').val("");
                                         $('#Modal_Edit').modal('hide');
                                         show_product();
                                     }
@@ -288,20 +249,20 @@
 
                             //get data for delete record
                             $('#show_data').on('click','.item_delete',function(){
-                                var id_pegawai = $(this).data('id_pegawai');
+                                var id_departemen = $(this).data('id_departemen');
                                 
                                 $('#Modal_Delete').modal('show');
-                                $('[id="id_delete"]').val(id_pegawai);
+                                $('[id="id_delete"]').val(id_departemen);
                             });
 
                             //delete record to database
                              $('#btn_delete').on('click',function(){
-                                var id_pegawai = $('#id_delete').val();
+                                var id_departemen = $('#id_delete').val();
                                 $.ajax({
                                     type : "POST",
-                                    url  : "<?php echo site_url('pegawai/delete')?>",
+                                    url  : "<?php echo site_url('departemen/delete')?>",
                                     dataType : "JSON",
-                                    data : {id_pegawai:id_pegawai},
+                                    data : {id_departemen:id_departemen},
                                     success: function(data){
                                         $('[id="id_delete"]').val("");
                                         $('#Modal_Delete').modal('hide');
