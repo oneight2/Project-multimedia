@@ -62,7 +62,7 @@
             <h4 class="alert-heading">Perhatian!</h4>
             <p>Project dikerjakan berdasarkan urutan waktu pengisian form pengajuan. <br>Butuh bantuan tim multimedia? <button  class="badge badge-warning" style="border:none"data-toggle="modal" data-target="#kontakModal">Hubungi disini</button></p>
         </div>
-        <div class="table-responsive" >
+        <div class="table-responsive" id="tabel-pengajuan" >
             <table class="table table-striped pengajuan" id="pengajuan" width="100%" cellspacing="0">
                 <thead>
                     <tr>
