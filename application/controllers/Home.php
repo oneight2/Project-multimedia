@@ -8,6 +8,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta');
+        $this->load->model('pengajuan_model', 'pengajuan');
     }
 
 
@@ -37,9 +38,9 @@ class Home extends CI_Controller {
 		$data['statusSelesai'] = $selesai->num_rows();
 		$data['waktu']=  date('d/m/Y - H:i');
 
-		$this->load->model('pengajuan_model', 'pengajuan');
+		
         $data['pengajuan'] = $this->pengajuan->getPengajuan();
-        $data['kontak'] = $this->pengajuan->getkontak();
+        $data['kontak'] = $this->pengajuan->getKontak();
 
 		$this->load->view('templates/auth_header', $data); 
 		$this->load->view('index', $data); 

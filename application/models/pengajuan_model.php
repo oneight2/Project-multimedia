@@ -11,7 +11,7 @@ class Pengajuan_model extends CI_Model
                 ";
         return $this->db->query($query)->result_array();
     }
-    public function getkontak(){
+    public function getKontak(){
             $query = "SELECT * FROM `pegawai` WHERE `id_pegawai` != 1 ";
             return $this->db->query($query)->result_array();
     }

@@ -224,10 +224,13 @@
 
 
             <script>
+
+                 var warna;
               $(document).ready(function(){
                             show_product(); //call function show all product
                             
                             $('#mydata').dataTable();
+                           
                              
                             //function show all product
                             function show_product(){
@@ -243,6 +246,7 @@
                                         var no = 1;
                                         var i;
                                         for(i=0; i<data.length; i++){
+                                            warna = data[i].status
                                             html += '<tr>'+
                                                     '<td>'+ no++ +'</td>'+
                                                     '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
@@ -250,14 +254,14 @@
                                                     '<td>'+data[i].nama_departemen+'</td>'+
                                                     '<td>'+data[i].target_project+'</td>'+
                                                     '<td>'+data[i].nama+'</td>'+
-                                                    '<td><p class="warna_status '+show_status()+'" >'+data[i].status+'</p></td>'+
+                                                    '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
                                                     '<td style="text-align:right;">'+
                                                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="'+data[i].nama_project+'" data-deskripsi="'+data[i].deskripsi+'" data-storyboard="'+data[i].storyboard+'" data-link="'+data[i].link+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
                                                         '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'" data-storyboard="'+data[i].storyboard+'"><i class="fas fa-trash"></i></a>'+
                                                     '</td>'+
                                                     '</tr>';
 
-                                                   
+                                                    show_status()   
                                         }
                                          
 
@@ -269,16 +273,16 @@
                             }
 
                             function show_status(){
+                                    var anjeg = $('.warna_status').text()
+                                    console.log(anjeg)
                                  // Warna status
-
-                                 var warna = $('.warna_status').text();
-                                 console.log(warna)
+                                    console.log(warna);
                                 
-                                 if(warna == 'Menunggu Proses'){
+                                 if(warna === 'Menunggu Proses'){
                                     $('.warna_status').addClass('badge badge-primary')
-                                 }else if (warna == 'Sedang Dikerjakan'){
+                                 }else if (warna === 'Sedang Dikerjakan'){
                                     $('.warna_status').addClass('badge badge-warning')
-                                 }else if(warna == 'Selesai'){
+                                 }else if(warna === 'Selesai'){
                                     $('.warna_status').addClass('badge badge-success')
                                  }
 
