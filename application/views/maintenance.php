@@ -1,4 +1,11 @@
 <body class="">
+    <div class="jumbotron">
+          <h1 class="display-5">Selamat Datang!</h1>
+          <p class="lead">Klik button isi form pengajuan perbaikan untuk melakukan request perbaikan</p>
+          <hr class="my-4">
+          <p>Butuh bantuan tim multimedia? <button  class="badge badge-warning" style="border:none"data-toggle="modal" data-target="#kontakModal">Hubungi disini</button></p>
+          <a class="btn btn-primary btn-md" id="btn-pengajuan" href="<?= base_url('maintenance/project'); ?>" role="button">Isi Pengajuan Perbaikan</a>
+    </div>
     <div class="container-fluid" id="container">
         <div class="row mt-2">
             <div class="col-xl-4 col-md-6 mb-2 card-status" >
@@ -7,7 +14,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pending Project</div>
+                                Daftar Tunggu</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
                             </div>
                             <div class="col-auto icon">
@@ -23,7 +30,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Project Dikerjakan</div>
+                            Dikerjakan</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
                         </div>
                         <div class="col-auto icon">
@@ -39,7 +46,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Project Selesai</div>
+                        Selesai</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusSelesai ?></div>
                     </div>
                     <div class="col-auto icon">
@@ -54,39 +61,24 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Perbaikan</h6>
     </div>
     <div class="card-body">
-        <a href="<?= base_url('home/project'); ?>" class="btn btn-primary btn-icon-split mb-4" id="btn-pengajuan">
-            <span class="icon text-white-50">
-                <i class="fas fa-camera-retro"></i>
-            </span>
-            <span class="text">Isi Pengajuan Project</span>
-        </a>
-        <a href="<?= base_url('maintenance'); ?>" class="btn btn-danger btn-icon-split mb-4" id="btn-perbaikan">
-            <span class="icon text-white-50">
-                <i class="fas fa-tools"></i>
-            </span>
-            <span class="text">Isi Pengajuan Perbaikan</span>
-        </a>
+        <!-- <a href="<?= base_url('maintenance/project'); ?>" class="btn btn-primary btn-md mb-2 pulse-button border" id="btn-pengajuan">Isi Pengajuan Project</a> -->
         <?= $this->session->flashdata('message'); ?>
-        <div class="alert alert-info" role="alert" id="perhatian">
-            <h4 class="alert-heading">Perhatian!</h4>
-            <p>Project dikerjakan berdasarkan urutan waktu pengisian form pengajuan. <br>Butuh bantuan tim multimedia? <button  class="badge badge-warning" style="border:none"data-toggle="modal" data-target="#kontakModal">Hubungi disini</button></p>
-        </div>
+        
         <div class="table-responsive" id="tabel-pengajuan" >
             <table class="table table-striped pengajuan" id="pengajuan" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Waktu Pengajuan</th>
-                        <th scope="col">Nama Project</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Departemen</th>
-                        <th scope="col">Target Project</th>
-                        <th scope="col">Nama Pengaju</th>
+                        <th scope="col">Perangkat</th>
+                        <th scope="col">Urgensitas</th>
                         <th scope="col">Status</th>
                         <th scope="col">Eksekusi</th>
-                        <!-- <th>Eksekusi</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -95,10 +87,10 @@
                     <tr>
                         <td data-label="No"><?= $no++ ?></td>
                         <td data-label="Waktu Pengajuan"><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
-                        <td data-label="Nama Project"><?= $row['nama_project'] ?></td>
+                        <td data-label="Nama Project"><?= $row['nama_pengaju'] ?></td>
                         <td data-label="Departemen"><?= $row['nama_departemen'] ?></td>
-                        <td data-label="Target"><?= $row['target_project'] ?></td>
-                        <td data-label="Nama"><?= $row['nama'] ?></td>
+                        <td data-label="Target"><?= $row['nama_perangkat'] ?></td>
+                        <td data-label="Nama"><?= $row['urgensitas'] ?></td>
                         <td data-label="Status"><p class="<?php 
                                 if($row['status'] == 'Menunggu Diproses'){
                                     echo 'badge badge-primary mb-0';

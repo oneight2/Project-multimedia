@@ -30,6 +30,7 @@
 	if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  // some code..
  		$('#btn-pengajuan').attr('class', 'btn btn-block btn-primary mb-3');
+ 		$('#btn-perbaikan').attr('class', 'btn btn-block btn-danger mb-3');
  		$('#card-menunggu').removeClass('py-2 h-100')
  		$('#card-dikerjakan').removeClass('py-2 h-100')
  		$('#card-selesai').removeClass('py-2 h-100')

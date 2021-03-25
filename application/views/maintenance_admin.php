@@ -6,7 +6,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pending Project</div>
+                                Menunggu Perbaikan</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
                             </div>
                             <div class="col-auto">
@@ -22,7 +22,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Project Dikerjakan</div>
+                            Dikerjakan</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
                         </div>
                         <div class="col-auto">
@@ -38,7 +38,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Project Selesai</div>
+                        Selesai</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusSelesai ?></div>
                     </div>
                     <div class="col-auto">
@@ -61,10 +61,10 @@
                         <tr>
                             <th>No</th>
                             <th>Waktu Pengajuan</th>
-                            <th>Nama Project</th>
+                            <th>Nama</th>
                             <th>Departemen</th>
-                            <th>Target Project</th>
-                            <th>Nama Pengaju</th>
+                            <th>Perangkat</th>
+                            <th>Urgensitas</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -92,23 +92,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Nama Project</label>
+                        <label class="col-md-2 col-form-label">Nama Perangkat</label>
                         <div class="col-md-10">
                             <input type="text" id="id_project" class="form-control"  hidden>
-                            <input type="text" name="nama_project_edit" id="nama_project_edit" class="form-control" placeholder="Nama Project" readonly>
+                            <input type="text" name="nama_perangkat" id="nama_perangkat" class="form-control" placeholder="Nama Project" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Deskripsi</label>
                         <div class="col-md-10">
                             <textarea type="text" name="deskripsi_edit" id="deskripsi_edit" class="form-control" placeholder="Deskripsi" readonly></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Storyboard</label>
-                        <div class="col-md-10">
-                            <a href="" class="btn btn-sm btn-warning" target="_blank" id="storyboard">Lihat Storyboard</a>
-                            <a href="" class="btn btn-sm btn-info" target="_blank" id="link">Link Referensi</a>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -146,7 +139,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -237,7 +230,7 @@
                             function show_product(){
                                 $.ajax({
                                     type  : 'GET',
-                                    url   : '<?php echo site_url('admin/product_data')?>',
+                                    url   : '<?php echo site_url('adminmaintenance/product_data')?>',
                                     async : false,
                                     dataType : 'json',
                                     contentType: "application/json",
@@ -251,14 +244,14 @@
                                             html += '<tr>'+
                                                     '<td>'+ no++ +'</td>'+
                                                     '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
-                                                    '<td>'+data[i].nama_project+'</td>'+
+                                                    '<td>'+data[i].nama_pengaju+'</td>'+
                                                     '<td>'+data[i].nama_departemen+'</td>'+
-                                                    '<td>'+data[i].target_project+'</td>'+
-                                                    '<td>'+data[i].nama+'</td>'+
+                                                    '<td>'+data[i].nama_perangkat+'</td>'+
+                                                    '<td>'+data[i].urgensitas+'</td>'+
                                                     '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
                                                     '<td style="text-align:right;">'+
-                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="'+data[i].nama_project+'" data-deskripsi="'+data[i].deskripsi+'" data-storyboard="'+data[i].storyboard+'" data-link="'+data[i].link+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
-                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'" data-storyboard="'+data[i].storyboard+'"><i class="fas fa-trash"></i></a>'+
+                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="'+data[i].nama_perangkat+'" data-deskripsi="'+data[i].deskripsi+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
+                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'"><i class="fas fa-trash"></i></a>'+
                                                     '</td>'+
                                                     '</tr>';
 
@@ -288,47 +281,21 @@
                             }
                            
 
-                            //Save product
-                            $('#btn_save').on('click',function(){
-                                var product_code = $('#product_code').val();
-                                var product_name = $('#product_name').val();
-                                var price        = $('#price').val();
-                                $.ajax({
-                                    type : "POST",
-                                    url  : "<?php echo site_url('admin/save')?>",
-                                    dataType : "JSON",
-                                    contentType: "application/json",
-                                    data : {product_code:product_code , product_name:product_name, price:price},
-                                    success: function(data){
-                                        $('[name="product_code"]').val("");
-                                        $('[name="product_name"]').val("");
-                                        $('[name="price"]').val("");
-                                        $('#Modal_Add').modal('hide');
-                                        show_product();
-                                    }
-                                });
-                                return false;
-                            });
-
                             //get data for update record
                             $('#show_data').on('click','.item_edit',function(){
                                 // showselectpegawai
                                 showPegawai();
 
                                 var id = $(this).data('id');
-                                var nama_project = $(this).data('nama_project');
+                                var nama_perangkat = $(this).data('nama_perangkat');
                                 var deskripsi = $(this).data('deskripsi');
-                                var storyboard = $(this).data('storyboard');
-                                var link = $(this).data('link');
 
 
                                 
                                 $('#Modal_Edit').modal('show');
                                 $('[id="id_project"]').val(id);
-                                $('[id="nama_project_edit"]').val(nama_project);
+                                $('[id="nama_perangkat"]').val(nama_perangkat);
                                 $('[id="deskripsi_edit"]').val(deskripsi);
-                                $('[id="storyboard"]').attr('href', 'assets/storyboard/'+storyboard);
-                                $('[id="link"]').attr('href', link);
                             });
 
                             // Fungsi SHow select pegawai
@@ -360,7 +327,7 @@
                                 var id_pegawai = $('#show_pegawai').val();
                                 $.ajax({
                                     type : "POST",
-                                    url  : "<?php echo site_url('admin/update')?>",
+                                    url  : "<?php echo site_url('adminmaintenance/update')?>",
                                     dataType : "JSON",
                                     data : {id:id , status:status, id_pegawai:id_pegawai},
                                     success: function(data){
@@ -377,25 +344,21 @@
                             //get data for delete record
                             $('#show_data').on('click','.item_delete',function(){
                                 var id = $(this).data('id');
-                                var storyboard = $(this).data('storyboard');
                                 
                                 $('#Modal_Delete').modal('show');
                                 $('[id="id_delete"]').val(id);
-                                $('[id="storyboard_delete"]').val(storyboard);
                             });
 
                             //delete record to database
                              $('#btn_delete').on('click',function(){
                                 var id = $('#id_delete').val();
-                                var storyboard = $('#storyboard_delete').val();
                                 $.ajax({
                                     type : "POST",
-                                    url  : "<?php echo site_url('admin/delete')?>",
+                                    url  : "<?php echo site_url('adminmaintenance/delete')?>",
                                     dataType : "JSON",
-                                    data : {id:id, storyboard:storyboard},
+                                    data : {id:id},
                                     success: function(data){
                                         $('[id="id_delete"]').val("");
-                                        $('[id="storyboard_delete"]').val("");
                                         $('#Modal_Delete').modal('hide');
                                         show_product();
                                     }

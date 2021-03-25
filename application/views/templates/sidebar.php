@@ -18,6 +18,14 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('/adminmaintenance') ?>">
+            <i class="fas fa-tools"></i>
+            <span>Pengajuan Perbaikan</span></a>
+    </li>
+
+     <hr class="sidebar-divider d-none d-md-block">
     <!-- Heading -->
     <div class="sidebar-heading">
         Addons
