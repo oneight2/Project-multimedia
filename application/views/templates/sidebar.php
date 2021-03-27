@@ -20,7 +20,7 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('/adminmaintenance') ?>">
+        <a class="nav-link" href="<?= base_url('/AdminMaintenance') ?>">
             <i class="fas fa-tools"></i>
             <span>Pengajuan Perbaikan</span></a>
     </li>
