@@ -18,53 +18,68 @@ class Admin extends CI_Controller
 			'title' => "Admin",
 		);
 
-		$menunggu = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
-                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Menunggu Diproses'
+		// cimanggis
+
+		$menungguCimanggis = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Menunggu Diproses' AND `pengajuan`.`tempat` = 'Cimanggis'
                 
                 ");
-		$diproses = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
-                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Sedang Dikerjakan'
+		$diprosesCimanggis = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Sedang Dikerjakan' AND `pengajuan`.`tempat` = 'Cimanggis'
                 
                 ");
-		$selesai = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
-                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Selesai'
+		$selesaiCimanggis = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis'
+                
+                ");
+
+		// Tapos
+
+		$menungguTapos = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Menunggu Diproses' AND `pengajuan`.`tempat` = 'Tapos'
+                
+                ");
+		$diprosesTapos = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Sedang Dikerjakan' AND `pengajuan`.`tempat` = 'Tapos'
+                
+                ");
+		$selesaiTapos = $this->db->query("SELECT * FROM `pengajuan` JOIN `departemen`
+                  ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen` WHERE `pengajuan`.`status` = 'Selesai' AND `pengajuan`.`tempat` = 'Tapos'
+                
+                ");
+
+		// Maintenance
+
+		$menungguPerbaikan = $this->db->query("SELECT * FROM `maintenance` JOIN `departemen`
+                  ON `maintenance`.`id_departemen` = `departemen`.`id_departemen` WHERE `maintenance`.`status` = 'Menunggu Diproses' 
+                
+                ");
+		$diprosesPerbaikan = $this->db->query("SELECT * FROM `maintenance` JOIN `departemen`
+                  ON `maintenance`.`id_departemen` = `departemen`.`id_departemen` WHERE `maintenance`.`status` = 'Sedang Dikerjakan' 
+                
+                ");
+		$selesaiPerbaikan= $this->db->query("SELECT * FROM `maintenance` JOIN `departemen`
+                  ON `maintenance`.`id_departemen` = `departemen`.`id_departemen` WHERE `maintenance`.`status` = 'Selesai' 
                 
                 ");
 
 
-		$data['statusMenunggu'] = $menunggu->num_rows();
-		$data['statusDikerjakan'] = $diproses->num_rows();
-		$data['statusSelesai'] = $selesai->num_rows();
+		$data['statusMenungguCimanggis'] = $menungguCimanggis->num_rows();
+		$data['statusDikerjakanCimanggis'] = $diprosesCimanggis->num_rows();
+		$data['statusSelesaiCimanggis'] = $selesaiCimanggis->num_rows();
+
+		$data['statusMenungguTapos'] = $menungguTapos->num_rows();
+		$data['statusDikerjakanTapos'] = $diprosesTapos->num_rows();
+		$data['statusSelesaiTapos'] = $selesaiTapos->num_rows();
+
+		$data['statusMenungguPerbaikan'] = $menungguPerbaikan->num_rows();
+		$data['statusDikerjakanPerbaikan'] = $diprosesPerbaikan->num_rows();
+		$data['statusSelesaiPerbaikan'] = $selesaiPerbaikan->num_rows();
 		
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard', $data);
-	}
-
-	function product_data(){
-		$data=$this->product_model->product_list();
-		echo json_encode($data);
-	}
-
-	function save(){
-		$data=$this->product_model->save_product();
-		echo json_encode($data);
-	}
-
-	function update(){
-		$data=$this->product_model->update_product();
-		echo json_encode($data);
-	}
-
-	function delete(){
-		$data=$this->product_model->delete_product();
-		echo json_encode($data);
-	}
-
-	function data_pegawai(){
-		$data=$this->product_model->data_pegawai();
-		echo json_encode($data);
 	}
 
 }

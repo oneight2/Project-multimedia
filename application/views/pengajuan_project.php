@@ -66,12 +66,31 @@
                                     placeholder="Link Contoh Project" name="link">
                                     <?= form_error('link', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
+                                <div class="form-group row mt-0">
+                                    <!-- <div class="col-sm-6">
+                                        <small class="text-info">Pilih Eksikutor</small>
+                                             <select class="custom-select" name="eksikutor">
+                                                <?php foreach ($pegawai as $row): ?>
+                                                    <option value="<?= $row['id_pegawai'] ?>"><?= $row['nama_pegawai'] ?></option>
+                                                    
+                                                <?php endforeach ?>
+                                                
+                                            </select>
+                                    </div> -->
+                                    <div class="col-sm-12">
+                                        <small class="text-info">Tempat</small>
+                                             <select class="custom-select" name="tempat">
+                                                    <option value="Cimanggis">Cimanggis</option>
+                                                    <option value="Tapos">Tapos</option>
+                                            </select>
+                                    </div>     
+                                </div>
                                 <?php
                                 $no = 1;
                                 $noo = 1;
                                 foreach ($jenis_project as $row): ?>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="<?= $row['id'] ?>" id="defaultCheck<?= $no++ ?>" name="jenis_project[]">
+                                    <input class="form-check-input" type="checkbox" value="<?= $row['jenis_project'] ?>" id="defaultCheck<?= $no++ ?>" name="jenis_project[]">
                                     <label class="form-check-label" for="defaultCheck<?= $noo++ ?>">
                                         <?= $row['jenis_project'] ?>
                                     </label>

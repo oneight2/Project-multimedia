@@ -53,11 +53,13 @@ class Home extends CI_Controller {
 			'departemen' => $this->db->get('departemen')->result_array(),
 			'jenis_project' => $this->db->get('project')->result_array(),
 		);
+		$data['pegawai'] = $this->pengajuan->getKontak();
 
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
 		$this->form_validation->set_rules('judul_project', 'Nama Project', 'trim|required');
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi Project', 'trim|required');
 		$this->form_validation->set_rules('waktu', 'Target Waktu Project', 'trim|required');
+		$this->form_validation->set_rules('tempat', 'Tempat', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('templates/auth_header', $data); 
@@ -91,12 +93,13 @@ class Home extends CI_Controller {
             $link = htmlspecialchars($this->input->post('link', true));
             $waktu_pengajuan = date('d/m/Y - H:i');
             $storyboards = $storyboard;
+            $tempat = $this->input->post('tempat', true);
 
             
 
 			$a = $this->input->post('jenis_project', true);
-			$aa = array_flip($a);
-			$id_jenis_project = json_encode($aa);
+			// $aa = array_flip($a);
+			$id_jenis_project = json_encode($a);
 
 
             $this->db->set('nama', $nama);
@@ -109,6 +112,7 @@ class Home extends CI_Controller {
             $this->db->set('waktu_pengajuan', $waktu_pengajuan);
             $this->db->set('storyboard', $storyboards);
             $this->db->set('id_jenis_project', $id_jenis_project);
+            $this->db->set('tempat', $tempat);
             $this->db->insert('pengajuan');
 
 

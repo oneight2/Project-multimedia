@@ -1,17 +1,49 @@
 <?php
 class Product_model extends CI_Model{
 
+
+	// PENGAJUAN PROJECT CIMANGGIS
 	function product_list(){
 
 		$hasil= "SELECT * FROM `pengajuan` JOIN `departemen`
 					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
-                
-                ";
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` != 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis'
+               ";
         return $this->db->query($hasil)->result();
-		// $hasil=$this->db->get('product');
-		// return $hasil->result();
 	}
 
+	function product_list_selesai(){
+
+		$hasil= "SELECT * FROM `pengajuan` JOIN `departemen`
+					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` = 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis'
+               ";
+        return $this->db->query($hasil)->result();
+	}
+
+
+	// PENGAJUAN PROJECT TAPOS
+	function product_list_tapos(){
+
+		$hasil= "SELECT * FROM `pengajuan` JOIN `departemen`
+					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` != 'Selesai' AND `pengajuan`.`tempat` = 'Tapos'
+               ";
+        return $this->db->query($hasil)->result();
+	}
+
+	function product_list_selesai_tapos(){
+
+		$hasil= "SELECT * FROM `pengajuan` JOIN `departemen`
+					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` = 'Selesai' AND `pengajuan`.`tempat` = 'Tapos'
+               ";
+        return $this->db->query($hasil)->result();
+	}
+
+
+
+	// SAMA AJA INI MAH BISA DUA DUANYA
 	function save_product(){
 		$data = array(
 				'product_code' 	=> $this->input->post('product_code'), 

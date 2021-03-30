@@ -85,7 +85,7 @@
                         <th scope="col">Target Project</th>
                         <th scope="col">Nama Pengaju</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Eksekusi</th>
+                        <th scope="col">Eksekutor</th>
                         <!-- <th>Eksekusi</th> -->
                     </tr>
                 </thead>
