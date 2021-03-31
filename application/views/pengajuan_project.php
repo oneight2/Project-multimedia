@@ -25,8 +25,8 @@
                                        <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
-                                        <select class="form-control" id="exampleFormControlSelect1" name="departemen">
-                                            <option selected>Pilih Departemen</option>
+                                        <select class="form-control" id="exampleFormControlSelect1" name="departemen" required>
+                                            <option value="" >Pilih Departemen</option>
                                             <?php foreach ($departemen as $row): ?>
                                             <option value="<?= $row['id_departemen'] ?>"><?= $row['nama_departemen'] ?></option>
                                             <?php endforeach ?>

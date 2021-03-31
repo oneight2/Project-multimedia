@@ -1,38 +1,37 @@
-
-<div class="row mt-2"> 
-            <div class="col-xl-4 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Menunggu Perbaikan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
+<div class="row mt-2">
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Menunggu Perbaikan</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
                     </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Dikerjakan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-md-6 mb-4">
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                        Dikerjakan</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
         <div class="card border-left-success shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -49,30 +48,64 @@
         </div>
     </div>
 </div>
-   <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Project</h6>
+    </div>
+    <ul class="nav nav-pills mb-3 mt-3 ml-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Menunggu & Diproses</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Selesai</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="mydata">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Waktu Pengajuan</th>
+                                <th>Nama</th>
+                                <th>Departemen</th>
+                                <th>Perangkat</th>
+                                <th>Urgensitas</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="show_data">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped" id="mydata">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Waktu Pengajuan</th>
-                            <th>Nama</th>
-                            <th>Departemen</th>
-                            <th>Perangkat</th>
-                            <th>Urgensitas</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="show_data">
-                        
-                    </tbody>
-                </table>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="selesai">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Waktu Pengajuan</th>
+                                <th>Nama</th>
+                                <th>Departemen</th>
+                                <th>Perangkat</th>
+                                <th>Urgensitas</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="show_data_selesai">
+                            
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -222,8 +255,10 @@
 
               $(document).ready(function(){
                             show_product(); //call function show all product
+                            show_product_selesai(); //call function show all product
                             
                             $('#mydata').dataTable();
+                            $('#selesai').dataTable();
                            
                              
                             //function show all product
@@ -256,7 +291,7 @@
                                                     '</td>'+
                                                     '</tr>';
 
-                                                    show_status()   
+                                                    // show_status()   
                                         }
                                          
 
@@ -267,23 +302,63 @@
                                 });
                             }
 
-                            function show_status(){
-                                    console.log(warna);
-                                
-                                 if(warna === 'Menunggu Proses'){
-                                    $('.warna_status').addClass('badge badge-primary')
-                                 }else if (warna === 'Sedang Dikerjakan'){
-                                    $('.warna_status').addClass('badge badge-warning')
-                                 }else if(warna === 'Selesai'){
-                                    $('.warna_status').addClass('badge badge-success')
-                                 }
+                            function show_product_selesai(){
+                                $.ajax({
+                                    type  : 'GET',
+                                    url   : '<?php echo site_url('AdminMaintenance/product_data_selesai')?>',
+                                    async : false,
+                                    dataType : 'json',
+                                    contentType: "application/json",
+                                    success : function(data){                               
+                                        
+                                        var html = '';
+                                        var no = 1;
+                                        var i;
+                                        for(i=0; i<data.length; i++){
+                                            warna = data[i].status
+                                            html += '<tr>'+
+                                                    '<td>'+ no++ +'</td>'+
+                                                    '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
+                                                    '<td>'+data[i].nama_pengaju+'</td>'+
+                                                    '<td>'+data[i].nama_departemen+'</td>'+
+                                                    '<td>'+data[i].nama_perangkat+'</td>'+
+                                                    '<td>'+data[i].urgensitas+'</td>'+
+                                                    '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
+                                                    '<td style="text-align:center;">'+
+                                                        '<a href="https://api.whatsapp.com/send?phone=62'+data[i].no_telp+'" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>'+
+                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="'+data[i].nama_perangkat+'" data-deskripsi="'+data[i].deskripsi+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
+                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'"><i class="fas fa-trash"></i></a>'+
+                                                    '</td>'+
+                                                    '</tr>';
 
+                                                    // show_status()   
+                                        }
+                                         
 
+                                        $('#show_data_selesai').html(html);
+                                        
+                                    }
+
+                                });
                             }
+
+                            // function show_status(){
+                            //         console.log(warna);
+                                
+                            //      if(warna === 'Menunggu Proses'){
+                            //         $('.warna_status').addClass('badge badge-primary')
+                            //      }else if (warna === 'Sedang Dikerjakan'){
+                            //         $('.warna_status').addClass('badge badge-warning')
+                            //      }else if(warna === 'Selesai'){
+                            //         $('.warna_status').addClass('badge badge-success')
+                            //      }
+
+
+                            // }
                            
 
                             //get data for update record
-                            $('#show_data').on('click','.item_edit',function(){
+                            $('#show_data, #show_data_selesai').on('click','.item_edit',function(){
                                 // showselectpegawai
                                 showPegawai();
 
@@ -303,7 +378,7 @@
                             function showPegawai(){
                                 $.ajax({
                                     type  : 'GET',
-                                    url   : '<?php echo site_url('admin/data_pegawai')?>',
+                                    url   : '<?php echo site_url('AdminMaintenance/data_pegawai')?>',
                                     async : false,
                                     dataType : 'json',
                                     contentType: "application/json",
@@ -343,7 +418,7 @@
                             });
 
                             //get data for delete record
-                            $('#show_data').on('click','.item_delete',function(){
+                            $('#show_data, #show_data_selesai').on('click','.item_delete',function(){
                                 var id = $(this).data('id');
                                 
                                 $('#Modal_Delete').modal('show');

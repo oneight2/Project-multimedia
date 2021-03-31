@@ -48,6 +48,10 @@ class AdminMaintenance extends CI_Controller {
 		$data=$this->maintenance_model->product_list();
 		echo json_encode($data);
 	}
+	function product_data_selesai(){
+		$data=$this->maintenance_model->product_list_selesai();
+		echo json_encode($data);
+	}
 
 	function save(){
 		$data=$this->maintenance_model->save_product();
@@ -68,5 +72,6 @@ class AdminMaintenance extends CI_Controller {
 		$data=$this->maintenance_model->data_pegawai();
 		echo json_encode($data);
 	}
+
 
 }

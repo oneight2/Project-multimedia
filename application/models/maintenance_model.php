@@ -19,12 +19,21 @@ class Maintenance_model extends CI_Model
     function product_list(){
 
         $hasil= "SELECT * FROM `maintenance` JOIN `departemen`
-                    ON `maintenance`.`id_departemen` = `departemen`.`id_departemen`
+                    ON `maintenance`.`id_departemen` = `departemen`.`id_departemen` WHERE `maintenance`. `status` != 'Selesai'
                 
                 ";
         return $this->db->query($hasil)->result();
         // $hasil=$this->db->get('product');
         // return $hasil->result();
+    }
+
+    function product_list_selesai(){
+
+        $hasil= "SELECT * FROM `maintenance` JOIN `departemen`
+                    ON `maintenance`.`id_departemen` = `departemen`.`id_departemen`
+                    JOIN `pegawai` ON `maintenance`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `maintenance`. `status` = 'Selesai'
+               ";
+        return $this->db->query($hasil)->result();
     }
 
 
@@ -47,6 +56,11 @@ class Maintenance_model extends CI_Model
         $this->db->where('id', $id);
         $result=$this->db->delete('maintenance');
         return $result;
+    }
+    function data_pegawai(){
+
+        $hasil=$this->db->get('pegawai');
+        return $hasil->result();
     }
 }
 
