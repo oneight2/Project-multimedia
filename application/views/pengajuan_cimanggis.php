@@ -243,7 +243,7 @@
                         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                            <a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
                                                     '</td>'+
                                                     '</tr>';
 
-                                                    // show_status()   
+                                                    show_status()   
                                         }
                                          
 
@@ -346,7 +346,7 @@
                                                     '</td>'+
                                                     '</tr>';
 
-                                                    // show_status() 
+                                                    show_status() 
                                         }
                                          
 
@@ -357,18 +357,18 @@
                                 });
                             }
 
-                            // function show_status(){
+                            function show_status(){
 
-                            //      if(warna == 'Menunggu Proses'){
-                            //         $('.warna_status').addClass('badge badge-primary')
-                            //      }else if (warna == 'Sedang Dikerjakan'){
-                            //         $('.warna_status').addClass('badge badge-warning')
-                            //      }else if(warna == 'Selesai'){
-                            //         $('.warna_status').addClass('badge badge-success')
-                            //      }
+                                 if(warna == 'Menunggu Proses'){
+                                    $('.warna_status').addClass('badge badge-primary')
+                                 }else if (warna == 'Sedang Dikerjakan'){
+                                    $('.warna_status').addClass('badge badge-warning')
+                                 }else if(warna == 'Selesai'){
+                                    $('.warna_status').addClass('badge badge-success')
+                                 }
 
 
-                            // }
+                            }
                            
 
                             //get data for update record
