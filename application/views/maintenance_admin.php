@@ -5,7 +5,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        Menunggu Perbaikan</div>
+                            Menunggu Perbaikan</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusMenunggu ?></div>
                     </div>
                     <div class="col-auto">
@@ -21,7 +21,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                        Dikerjakan</div>
+                            Dikerjakan</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusDikerjakan ?></div>
                     </div>
                     <div class="col-auto">
@@ -37,7 +37,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Selesai</div>
+                            Selesai</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $statusSelesai ?></div>
                     </div>
                     <div class="col-auto">
@@ -79,7 +79,7 @@
                             </tr>
                         </thead>
                         <tbody id="show_data">
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -102,7 +102,7 @@
                             </tr>
                         </thead>
                         <tbody id="show_data_selesai">
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -120,21 +120,24 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Update Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Nama Perangkat</label>
                         <div class="col-md-10">
-                            <input type="text" id="id_project" class="form-control"  hidden>
+                            <input type="text" id="id_project" class="form-control" hidden>
                             <input type="text" name="nama_perangkat" id="nama_perangkat" class="form-control" placeholder="Nama Project" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Deskripsi</label>
                         <div class="col-md-10">
-                            <textarea type="text" name="deskripsi_edit" id="deskripsi_edit" class="form-control" placeholder="Deskripsi" readonly></textarea>
+                            <!-- <textarea type="text" name="deskripsi_edit" id="deskripsi_edit" class="form-control" placeholder="Deskripsi" readonly></textarea> -->
+                            <div class="alert alert-info" role="alert">
+                                <p name="deskripsi_edit" id="deskripsi_edit"></p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -152,7 +155,7 @@
                         <label class="col-md-2 col-form-label">Eksekusi</label>
                         <div class="col-md-10">
                             <select class="custom-select" id="show_pegawai">
-                                
+
                             </select>
                         </div>
                     </div>
@@ -174,7 +177,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -195,257 +198,262 @@
 
 <!-- FOOTER -->
 </div>
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy;Indonesia Heritage Foundation<?= date('Y'); ?></span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy;Indonesia Heritage Foundation<?= date('Y'); ?></span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
 
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
-            <!-- End of Content Wrapper -->
-
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Logout</a>
             </div>
-            <!-- End of Page Wrapper -->
+        </div>
+    </div>
+</div>
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
+<!-- Bootstrap core JavaScript-->
+<script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/jquery-3.2.1.js' ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/bootstrap.js' ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/jquery.dataTables.js' ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/dataTables.bootstrap4.js' ?>"></script>
 
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="<?= base_url('login/logout'); ?>">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Core plugin JavaScript-->
+<script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Bootstrap core JavaScript-->
-            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/jquery-3.2.1.js'?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/bootstrap.js'?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/jquery.dataTables.js'?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/').'ajax/js/dataTables.bootstrap4.js'?>"></script>
-
-            <!-- Core plugin JavaScript-->
-            <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
-            <!-- Custom scripts for all pages-->
-            <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
-            
+<!-- Custom scripts for all pages-->
+<script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
 
-            <script>
 
-                 var warna;
+<script>
+    var warna;
 
-              $(document).ready(function(){
-                            show_product(); //call function show all product
-                            show_product_selesai(); //call function show all product
-                            
-                            $('#mydata').dataTable();
-                            $('#selesai').dataTable();
-                           
-                             
-                            //function show all product
-                            function show_product(){
-                                $.ajax({
-                                    type  : 'GET',
-                                    url   : '<?php echo site_url('AdminMaintenance/product_data')?>',
-                                    async : false,
-                                    dataType : 'json',
-                                    contentType: "application/json",
-                                    success : function(data){                               
-                                        
-                                        var html = '';
-                                        var no = 1;
-                                        var i;
-                                        for(i=0; i<data.length; i++){
-                                            warna = data[i].status
-                                            html += '<tr>'+
-                                                    '<td>'+ no++ +'</td>'+
-                                                    '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
-                                                    '<td>'+data[i].nama_pengaju+'</td>'+
-                                                    '<td>'+data[i].nama_departemen+'</td>'+
-                                                    '<td>'+data[i].nama_perangkat+'</td>'+
-                                                    '<td>'+data[i].urgensitas+'</td>'+
-                                                    '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
-                                                    '<td style="text-align:center;">'+
-                                                        '<a href="https://api.whatsapp.com/send?phone=62'+data[i].no_telp+'" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>'+
-                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="'+data[i].nama_perangkat+'" data-deskripsi="'+data[i].deskripsi+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
-                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'"><i class="fas fa-trash"></i></a>'+
-                                                    '</td>'+
-                                                    '</tr>';
+    $(document).ready(function() {
+        show_product(); //call function show all product
+        show_product_selesai(); //call function show all product
 
-                                                    // show_status()   
-                                        }
-                                         
-
-                                        $('#show_data').html(html);
-                                        
-                                    }
-
-                                });
-                            }
-
-                            function show_product_selesai(){
-                                $.ajax({
-                                    type  : 'GET',
-                                    url   : '<?php echo site_url('AdminMaintenance/product_data_selesai')?>',
-                                    async : false,
-                                    dataType : 'json',
-                                    contentType: "application/json",
-                                    success : function(data){                               
-                                        
-                                        var html = '';
-                                        var no = 1;
-                                        var i;
-                                        for(i=0; i<data.length; i++){
-                                            warna = data[i].status
-                                            html += '<tr>'+
-                                                    '<td>'+ no++ +'</td>'+
-                                                    '<td><b class="text-danger">'+data[i].waktu_pengajuan+'</b></td>'+
-                                                    '<td>'+data[i].nama_pengaju+'</td>'+
-                                                    '<td>'+data[i].nama_departemen+'</td>'+
-                                                    '<td>'+data[i].nama_perangkat+'</td>'+
-                                                    '<td>'+data[i].urgensitas+'</td>'+
-                                                    '<td><p class="warna_status" >'+data[i].status+'</p></td>'+
-                                                    '<td style="text-align:center;">'+
-                                                        '<a href="https://api.whatsapp.com/send?phone=62'+data[i].no_telp+'" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>'+
-                                                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="'+data[i].nama_perangkat+'" data-deskripsi="'+data[i].deskripsi+'" data-id="'+data[i].id+'" data-id_pegawai="'+data[i].id_pegawai+'"><i class="fas fa-eye"></i></a>'+' '+
-                                                        '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="'+data[i].id+'"><i class="fas fa-trash"></i></a>'+
-                                                    '</td>'+
-                                                    '</tr>';
-
-                                                    // show_status()   
-                                        }
-                                         
-
-                                        $('#show_data_selesai').html(html);
-                                        
-                                    }
-
-                                });
-                            }
-
-                            // function show_status(){
-                            //         console.log(warna);
-                                
-                            //      if(warna === 'Menunggu Proses'){
-                            //         $('.warna_status').addClass('badge badge-primary')
-                            //      }else if (warna === 'Sedang Dikerjakan'){
-                            //         $('.warna_status').addClass('badge badge-warning')
-                            //      }else if(warna === 'Selesai'){
-                            //         $('.warna_status').addClass('badge badge-success')
-                            //      }
+        $('#mydata').dataTable();
+        $('#selesai').dataTable();
 
 
-                            // }
-                           
+        //function show all product
+        function show_product() {
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo site_url('AdminMaintenance/product_data') ?>',
+                async: false,
+                dataType: 'json',
+                contentType: "application/json",
+                success: function(data) {
 
-                            //get data for update record
-                            $('#show_data, #show_data_selesai').on('click','.item_edit',function(){
-                                // showselectpegawai
-                                showPegawai();
+                    var html = '';
+                    var no = 1;
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        warna = data[i].status
+                        html += '<tr>' +
+                            '<td>' + no++ + '</td>' +
+                            '<td><b class="text-danger">' + data[i].waktu_pengajuan + '</b></td>' +
+                            '<td>' + data[i].nama_pengaju + '</td>' +
+                            '<td>' + data[i].nama_departemen + '</td>' +
+                            '<td>' + data[i].nama_perangkat + '</td>' +
+                            '<td>' + data[i].urgensitas + '</td>' +
+                            '<td><p class="warna_status" >' + data[i].status + '</p></td>' +
+                            '<td style="text-align:center;">' +
+                            '<a href="https://api.whatsapp.com/send?phone=62' + data[i].no_telp + '" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>' +
+                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="' + data[i].nama_perangkat + '" data-deskripsi="' + data[i].deskripsi + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '"><i class="fas fa-eye"></i></a>' + ' ' +
+                            '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="' + data[i].id + '"><i class="fas fa-trash"></i></a>' +
+                            '</td>' +
+                            '</tr>';
 
-                                var id = $(this).data('id');
-                                var nama_perangkat = $(this).data('nama_perangkat');
-                                var deskripsi = $(this).data('deskripsi');
+                        // show_status()   
+                    }
 
 
-                                
-                                $('#Modal_Edit').modal('show');
-                                $('[id="id_project"]').val(id);
-                                $('[id="nama_perangkat"]').val(nama_perangkat);
-                                $('[id="deskripsi_edit"]').val(deskripsi);
-                            });
+                    $('#show_data').html(html);
 
-                            // Fungsi SHow select pegawai
-                            function showPegawai(){
-                                $.ajax({
-                                    type  : 'GET',
-                                    url   : '<?php echo site_url('AdminMaintenance/data_pegawai')?>',
-                                    async : false,
-                                    dataType : 'json',
-                                    contentType: "application/json",
-                                    success : function(data){
-                                        var html = '';
-                                        var no = 1;
-                                        var i;
-                                        for(i=0; i<data.length; i++){
-                                            html += 
-                                                    '<option value="'+data[i].id_pegawai+'">'+data[i].nama_pegawai+'</option>';
-                                        }
-                                        $('#show_pegawai').html(html);
-                                    }
+                }
 
-                                });
-                            }
+            });
+        }
 
-                            //update record to database
-                             $('#btn_update').on('click',function(){
-                                var id = $('#id_project').val();
-                                var status = $('#ubah_status').val();
-                                var id_pegawai = $('#show_pegawai').val();
-                                $.ajax({
-                                    type : "POST",
-                                    url  : "<?php echo site_url('AdminMaintenance/update')?>",
-                                    dataType : "JSON",
-                                    data : {id:id , status:status, id_pegawai:id_pegawai},
-                                    success: function(data){
-                                        $('[id="id_project"]').val("");
-                                        $('[id="ubah_status"]').val("");
-                                        $('[id="show_pegawai"]').val("");
-                                        $('#Modal_Edit').modal('hide');
-                                        show_product();
-                                    }
-                                });
-                                return false;
-                            });
+        function show_product_selesai() {
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo site_url('AdminMaintenance/product_data_selesai') ?>',
+                async: false,
+                dataType: 'json',
+                contentType: "application/json",
+                success: function(data) {
 
-                            //get data for delete record
-                            $('#show_data, #show_data_selesai').on('click','.item_delete',function(){
-                                var id = $(this).data('id');
-                                
-                                $('#Modal_Delete').modal('show');
-                                $('[id="id_delete"]').val(id);
-                            });
+                    var html = '';
+                    var no = 1;
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        warna = data[i].status
+                        html += '<tr>' +
+                            '<td>' + no++ + '</td>' +
+                            '<td><b class="text-danger">' + data[i].waktu_pengajuan + '</b></td>' +
+                            '<td>' + data[i].nama_pengaju + '</td>' +
+                            '<td>' + data[i].nama_departemen + '</td>' +
+                            '<td>' + data[i].nama_perangkat + '</td>' +
+                            '<td>' + data[i].urgensitas + '</td>' +
+                            '<td><p class="warna_status" >' + data[i].status + '</p></td>' +
+                            '<td style="text-align:center;">' +
+                            '<a href="https://api.whatsapp.com/send?phone=62' + data[i].no_telp + '" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>' +
+                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="' + data[i].nama_perangkat + '" data-deskripsi="' + data[i].deskripsi + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '"><i class="fas fa-eye"></i></a>' + ' ' +
+                            '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="' + data[i].id + '"><i class="fas fa-trash"></i></a>' +
+                            '</td>' +
+                            '</tr>';
 
-                            //delete record to database
-                             $('#btn_delete').on('click',function(){
-                                var id = $('#id_delete').val();
-                                $.ajax({
-                                    type : "POST",
-                                    url  : "<?php echo site_url('AdminMaintenance/delete')?>",
-                                    dataType : "JSON",
-                                    data : {id:id},
-                                    success: function(data){
-                                        $('[id="id_delete"]').val("");
-                                        $('#Modal_Delete').modal('hide');
-                                        show_product();
-                                    }
-                                });
-                                return false;
-                            });
+                        // show_status()   
+                    }
 
-                             
-                        });
-            </script>
 
-            </body>
+                    $('#show_data_selesai').html(html);
 
-            </html>
+                }
+
+            });
+        }
+
+        // function show_status(){
+        //         console.log(warna);
+
+        //      if(warna === 'Menunggu Proses'){
+        //         $('.warna_status').addClass('badge badge-primary')
+        //      }else if (warna === 'Sedang Dikerjakan'){
+        //         $('.warna_status').addClass('badge badge-warning')
+        //      }else if(warna === 'Selesai'){
+        //         $('.warna_status').addClass('badge badge-success')
+        //      }
+
+
+        // }
+
+
+        //get data for update record
+        $('#show_data, #show_data_selesai').on('click', '.item_edit', function() {
+            // showselectpegawai
+            showPegawai();
+
+            var id = $(this).data('id');
+            var nama_perangkat = $(this).data('nama_perangkat');
+            var deskripsi = $(this).data('deskripsi');
+
+
+
+            $('#Modal_Edit').modal('show');
+            $('[id="id_project"]').val(id);
+            $('[id="nama_perangkat"]').val(nama_perangkat);
+            $('[id="deskripsi_edit"]').text(deskripsi);
+        });
+
+        // Fungsi SHow select pegawai
+        function showPegawai() {
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo site_url('AdminMaintenance/data_pegawai') ?>',
+                async: false,
+                dataType: 'json',
+                contentType: "application/json",
+                success: function(data) {
+                    var html = '';
+                    var no = 1;
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html +=
+                            '<option value="' + data[i].id_pegawai + '">' + data[i].nama_pegawai + '</option>';
+                    }
+                    $('#show_pegawai').html(html);
+                }
+
+            });
+        }
+
+        //update record to database
+        $('#btn_update').on('click', function() {
+            var id = $('#id_project').val();
+            var status = $('#ubah_status').val();
+            var id_pegawai = $('#show_pegawai').val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('AdminMaintenance/update') ?>",
+                dataType: "JSON",
+                data: {
+                    id: id,
+                    status: status,
+                    id_pegawai: id_pegawai
+                },
+                success: function(data) {
+                    $('[id="id_project"]').val("");
+                    $('[id="ubah_status"]').val("");
+                    $('[id="show_pegawai"]').val("");
+                    $('#Modal_Edit').modal('hide');
+                    show_product();
+                }
+            });
+            return false;
+        });
+
+        //get data for delete record
+        $('#show_data, #show_data_selesai').on('click', '.item_delete', function() {
+            var id = $(this).data('id');
+
+            $('#Modal_Delete').modal('show');
+            $('[id="id_delete"]').val(id);
+        });
+
+        //delete record to database
+        $('#btn_delete').on('click', function() {
+            var id = $('#id_delete').val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('AdminMaintenance/delete') ?>",
+                dataType: "JSON",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('[id="id_delete"]').val("");
+                    $('#Modal_Delete').modal('hide');
+                    show_product();
+                }
+            });
+            return false;
+        });
+
+
+    });
+</script>
+
+</body>
+
+</html>
