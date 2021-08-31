@@ -8,25 +8,21 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+<!-- FILE UPLOAD -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/plugins/piexif.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/plugins/sortable.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/fileinput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/locales/LANG.js"></script>
 
 
 <script>
 	$('#pengajuan').dataTable();
 	$('#pengajuan-selesai').dataTable();
+	$("#upload-storyboard").fileinput();
 
-	$('#upload-storyboard').on('change', function() {
-		//get the file name
-		var fileName = $(this).val().split('\\').pop();
-		console.log(fileName)
-		//replace the "Choose a file" label
-		$(this).next('.custom-file-label').html(fileName);
-	})
-
-
-	// setInterval(function(){
-	//   $( "#pengajuan" ).load( "home #pengajuan" );
-	//  	}, 9000);
-	//refresh every 2 seconds
 
 	if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		// some code..

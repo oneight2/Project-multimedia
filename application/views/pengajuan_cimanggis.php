@@ -159,7 +159,6 @@
                         <label class="col-md-2 col-form-label">Status</label>
                         <div class="col-md-10">
                             <select class="custom-select" id="ubah_status">
-                                <option selected>Choose...</option>
                                 <option value="Menunggu Diproses">Menunggu Diproses</option>
                                 <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
                                 <option value="Selesai">Selesai</option>
@@ -301,7 +300,7 @@
                             '<td><p class="warna_status mb-0" >' + data[i].status + '</p></td>' +
                             '<td>' + data[i].nama_pegawai + '</td>' +
                             '<td style="text-align:center;">' +
-                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="' + data[i].nama_project + '" data-deskripsi="' + data[i].deskripsi + '" data-storyboard="' + data[i].storyboard + '" data-link="' + data[i].link + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '" data-id_project="' + JSON.parse(data[i].id_jenis_project) + '"><i class="fas fa-eye"></i></a>' + ' ' +
+                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="' + data[i].nama_project + '" data-deskripsi="' + data[i].deskripsi + '" data-storyboard="' + data[i].storyboard + '" data-link="' + data[i].link + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '" data-id_project="' + JSON.parse(data[i].id_jenis_project) + '"data-status="' + data[i].status + '" data-nama="' + data[i].id_pegawai + '"><i class="fas fa-eye"></i></a>' + ' ' +
                             '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="' + data[i].id + '" data-storyboard="' + data[i].storyboard + '"><i class="fas fa-trash"></i></a>' +
                             '</td>' +
                             '</tr>';
@@ -339,7 +338,7 @@
                             '<td><p class="warna_status mb-0 badge badge-success" >' + data[i].status + '</p></td>' +
                             '<td>' + data[i].nama_pegawai + '</td>' +
                             '<td style="text-align:center;">' +
-                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="' + data[i].nama_project + '" data-deskripsi="' + data[i].deskripsi + '" data-storyboard="' + data[i].storyboard + '" data-link="' + data[i].link + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '" data-id_project="' + JSON.parse(data[i].id_jenis_project) + '"><i class="fas fa-eye"></i></a>' + ' ' +
+                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_project="' + data[i].nama_project + '" data-deskripsi="' + data[i].deskripsi + '" data-storyboard="' + data[i].storyboard + '" data-link="' + data[i].link + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '" data-id_project="' + JSON.parse(data[i].id_jenis_project) + '"data-status="' + data[i].status + '" data-nama="' + data[i].id_pegawai + '" ><i class="fas fa-eye"></i></a>' + ' ' +
                             '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="' + data[i].id + '" data-storyboard="' + data[i].storyboard + '"><i class="fas fa-trash"></i></a>' +
                             '</td>' +
                             '</tr>';
@@ -365,6 +364,9 @@
             var jenis_project = $(this).data('id_project');
             var btnStoryboard = '<a href="assets/storyboard/' + storyboard + '" class="btn btn-sm btn-warning mr-2" target="_blank" id="storyboard">Lihat Storyboard</a>';
             var btnLink = '<a href="' + link + '" class="btn btn-sm btn-info" target="_blank" id="link">Link Referensi</a>';
+            var status = $(this).data('status');
+            var nama_pegawai = $(this).data('nama');
+
 
             $('#Modal_Edit').modal('show');
 
@@ -382,9 +384,13 @@
             $('[id="nama_project_edit"]').val(nama_project);
             $('[id="deskripsi_edit"]').text(deskripsi);
             $('[id="jenis_project"]').val(jenis_project);
+            $('[id="ubah_status"]').val(status)
+            $('[id="show_pegawai"]').val(nama_pegawai)
+
             // $('[id="storyboard"]').attr('href', 'assets/storyboard/' + storyboard);
             // $('[id="link"]').attr('href', link);
         });
+
 
         // Fungsi SHow select pegawai
         function showPegawai() {
@@ -400,7 +406,7 @@
                     var i;
                     for (i = 0; i < data.length; i++) {
                         html +=
-                            '<option value="' + data[i].id_pegawai + '">' + data[i].nama_pegawai + '</option>';
+                            '<option value="' + data[i].id_pegawai + '" >' + data[i].nama_pegawai + '</option>';
                     }
                     $('#show_pegawai').html(html);
                 }

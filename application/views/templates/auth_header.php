@@ -22,6 +22,14 @@
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>css/tabel.css" rel="stylesheet">
+    <style>
+        @media (min-width: 1200px) {
+
+            .pengajuan .container {
+                max-width: 1350px;
+            }
+        }
+    </style>
 
 
 </head>

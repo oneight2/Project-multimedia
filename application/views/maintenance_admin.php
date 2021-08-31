@@ -144,7 +144,6 @@
                         <label class="col-md-2 col-form-label">Status</label>
                         <div class="col-md-10">
                             <select class="custom-select" id="ubah_status">
-                                <option selected>Choose...</option>
                                 <option value="Menunggu Diproses">Menunggu Diproses</option>
                                 <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
                                 <option value="Selesai">Selesai</option>
@@ -288,7 +287,7 @@
                             '<td><p class="warna_status" >' + data[i].status + '</p></td>' +
                             '<td style="text-align:center;">' +
                             '<a href="https://api.whatsapp.com/send?phone=62' + data[i].no_telp + '" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>' +
-                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="' + data[i].nama_perangkat + '" data-deskripsi="' + data[i].deskripsi + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '"><i class="fas fa-eye"></i></a>' + ' ' +
+                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="' + data[i].nama_perangkat + '" data-deskripsi="' + data[i].deskripsi + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '" data-status="' + data[i].status + '"><i class="fas fa-eye"></i></a>' + ' ' +
                             '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="' + data[i].id + '"><i class="fas fa-trash"></i></a>' +
                             '</td>' +
                             '</tr>';
@@ -328,7 +327,7 @@
                             '<td><p class="warna_status" >' + data[i].status + '</p></td>' +
                             '<td style="text-align:center;">' +
                             '<a href="https://api.whatsapp.com/send?phone=62' + data[i].no_telp + '" class="btn btn-success btn-sm mr-2" target="_blank"><i class="fab fa-whatsapp"></i></a>' +
-                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="' + data[i].nama_perangkat + '" data-deskripsi="' + data[i].deskripsi + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '"><i class="fas fa-eye"></i></a>' + ' ' +
+                            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-nama_perangkat="' + data[i].nama_perangkat + '" data-deskripsi="' + data[i].deskripsi + '" data-id="' + data[i].id + '" data-id_pegawai="' + data[i].id_pegawai + '" data-status="' + data[i].status + '"><i class="fas fa-eye"></i></a>' + ' ' +
                             '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id="' + data[i].id + '"><i class="fas fa-trash"></i></a>' +
                             '</td>' +
                             '</tr>';
@@ -367,6 +366,9 @@
             var id = $(this).data('id');
             var nama_perangkat = $(this).data('nama_perangkat');
             var deskripsi = $(this).data('deskripsi');
+            var status = $(this).data('status');
+            var nama_pegawai = $(this).data('id_pegawai');
+            console.log(status)
 
 
 
@@ -374,6 +376,8 @@
             $('[id="id_project"]').val(id);
             $('[id="nama_perangkat"]').val(nama_perangkat);
             $('[id="deskripsi_edit"]').text(deskripsi);
+            $('[id="ubah_status"]').val(status)
+            $('[id="show_pegawai"]').val(nama_pegawai)
         });
 
         // Fungsi SHow select pegawai

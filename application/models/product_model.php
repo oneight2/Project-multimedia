@@ -9,7 +9,7 @@ class Product_model extends CI_Model
 
 		$hasil = "SELECT * FROM `pengajuan` JOIN `departemen`
 					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
-					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` != 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis'
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` != 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis' ORDER BY `id` ASC
                ";
 		return $this->db->query($hasil)->result();
 	}
@@ -19,7 +19,7 @@ class Product_model extends CI_Model
 
 		$hasil = "SELECT * FROM `pengajuan` JOIN `departemen`
 					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
-					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` = 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis'
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` = 'Selesai' AND `pengajuan`.`tempat` = 'Cimanggis' ORDER BY `id` ASC
                ";
 		return $this->db->query($hasil)->result();
 	}
@@ -31,7 +31,7 @@ class Product_model extends CI_Model
 
 		$hasil = "SELECT * FROM `pengajuan` JOIN `departemen`
 					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
-					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` != 'Selesai' AND `pengajuan`.`tempat` = 'Tapos'
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` != 'Selesai' AND `pengajuan`.`tempat` = 'Tapos' ORDER BY `id` ASC
                ";
 		return $this->db->query($hasil)->result();
 	}
@@ -41,7 +41,7 @@ class Product_model extends CI_Model
 
 		$hasil = "SELECT * FROM `pengajuan` JOIN `departemen`
 					ON `pengajuan`.`id_departemen` = `departemen`.`id_departemen`
-					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` = 'Selesai' AND `pengajuan`.`tempat` = 'Tapos'
+					JOIN `pegawai` ON `pengajuan`.`id_pegawai` = `pegawai`.`id_pegawai` WHERE `pengajuan`. `status` = 'Selesai' AND `pengajuan`.`tempat` = 'Tapos' ORDER BY `id` ASC
                ";
 		return $this->db->query($hasil)->result();
 	}
