@@ -16,12 +16,29 @@
 <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/plugins/sortable.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/fileinput.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.3/js/locales/LANG.js"></script>
+<script src="https://cdn.tiny.cloud/1/3t0zidambqfry3j4gx6dm85l174mfcbp7yfiu4vwz87pwcfh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 
 <script>
 	$('#pengajuan').dataTable();
 	$('#pengajuan-selesai').dataTable();
 	$("#upload-storyboard").fileinput();
+
+	tinymce.init({
+		selector: 'textarea#deskripsi-project',
+		height: 300,
+		menubar: false,
+		plugins: [
+			'advlist autolink lists link image charmap print preview anchor',
+			'searchreplace visualblocks code fullscreen',
+			'insertdatetime media table paste code help wordcount'
+		],
+		toolbar: 'undo redo | formatselect | ' +
+			'bold italic backcolor | alignleft aligncenter ' +
+			'alignright alignjustify | bullist numlist outdent indent | ' +
+			'removeformat | help',
+		content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+	});
 
 
 	if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

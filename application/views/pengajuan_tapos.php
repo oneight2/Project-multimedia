@@ -136,10 +136,10 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Deskripsi</label>
                         <div class="col-md-10">
-                            <!-- <textarea type="text" name="deskripsi_edit" id="deskripsi_edit" class="form-control" placeholder="Deskripsi" readonly></textarea> -->
-                            <div class="alert alert-success" role="alert">
+                            <textarea type="text" name="deskripsi_edit" id="deskripsi-edit" class="form-control" placeholder="Deskripsi" readonly></textarea>
+                            <!-- <div class="alert alert-success" role="alert">
                                 <p name="deskripsi_edit" id="deskripsi_edit"></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="form-group row">
@@ -257,6 +257,7 @@
 <script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/bootstrap.js' ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/jquery.dataTables.js' ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/dataTables.bootstrap4.js' ?>"></script>
+<script src="https://cdn.tiny.cloud/1/3t0zidambqfry3j4gx6dm85l174mfcbp7yfiu4vwz87pwcfh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -275,6 +276,23 @@
 
         $('#mydata').dataTable();
         $('#selesai').dataTable();
+        tinymce.init({
+            selector: 'textarea#deskripsi-edit',
+            themes: "modern",
+            height: 300,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+            set: 'readonly'
+        });
 
 
         //function show all product
@@ -403,7 +421,9 @@
 
             $('[id="id_project"]').val(id);
             $('[id="nama_project_edit"]').val(nama_project);
-            $('[id="deskripsi_edit"]').text(deskripsi);
+            // $('[id="deskripsi_edit"]').text(deskripsi);
+            tinymce.activeEditor.setContent(deskripsi);
+            tinymce.activeEditor.mode.set("readonly");
             $('[id="jenis_project"]').val(jenis_project);
             $('[id="ubah_status"]').val(status)
             $('[id="show_pegawai"]').val(nama_pegawai)

@@ -38,7 +38,7 @@
                                 <?= form_error('judul_project', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Deskripsi Project" name="deskripsi"></textarea>
+                                <textarea class="form-control" id="deskripsi-project" rows="3" placeholder="Deskripsi Project" name="deskripsi"></textarea>
                                 <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">

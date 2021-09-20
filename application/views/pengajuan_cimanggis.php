@@ -136,10 +136,10 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Deskripsi</label>
                         <div class="col-md-10">
-                            <!-- <textarea type="text" name="deskripsi_edit" id="deskripsi_edit" class="form-control" placeholder="Deskripsi" readonly></textarea> -->
-                            <div class="alert alert-success" role="alert">
-                                <p name="deskripsi_edit" id="deskripsi_edit"></p>
-                            </div>
+                            <textarea type="text" name="deskripsi_edit" id="deskripsi-edit" class="form-control" placeholder="Deskripsi" readonly></textarea>
+                            <!-- <div class="alert alert-success" role="alert">
+                                <div name="deskripsi_edit" id="deskripsi_edit"></div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="form-group row">
@@ -255,6 +255,8 @@
 <script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/bootstrap.js' ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/jquery.dataTables.js' ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/') . 'ajax/js/dataTables.bootstrap4.js' ?>"></script>
+<script src="https://cdn.tiny.cloud/1/3t0zidambqfry3j4gx6dm85l174mfcbp7yfiu4vwz87pwcfh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -273,6 +275,23 @@
 
         $('#mydata').dataTable();
         $('#selesai').dataTable();
+        tinymce.init({
+            selector: 'textarea#deskripsi-edit',
+            themes: "modern",
+            height: 300,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+            set: 'readonly'
+        });
 
 
         //function show all product
@@ -293,7 +312,7 @@
                         html += '<tr>' +
                             '<td>' + no++ + '</td>' +
                             '<td><b class="text-danger">' + data[i].waktu_pengajuan + '</b></td>' +
-                            '<td>' + data[i].nama_project + '</td>' +
+                            '<td id="nama_project_proses" data-maxlength="20">' + data[i].nama_project + '</td>' +
                             '<td>' + data[i].nama_departemen + '</td>' +
                             '<td><b class="text-danger">' + data[i].target_project + '</b></td>' +
                             '<td>' + data[i].nama + '</td>' +
@@ -306,13 +325,24 @@
                             '</tr>';
 
                     }
+
                     $('#show_data').html(html);
+
 
 
                 }
 
             });
         }
+        $("#nama_project_proses, #nama_project_selesai").text(function(index, currentText) {
+            var maxLength = $(this).parent().attr('data-maxlength');
+            if (currentText.length >= maxLength) {
+                return currentText.substr(0, maxLength) + "...";
+            } else {
+                return currentText
+            }
+            console.log(maxLength)
+        });
 
         //function show all product SELESAI
         function show_product_selesai() {
@@ -331,7 +361,7 @@
                         html += '<tr>' +
                             '<td>' + no++ + '</td>' +
                             '<td><b class="text-danger">' + data[i].waktu_pengajuan + '</b></td>' +
-                            '<td>' + data[i].nama_project + '</td>' +
+                            '<td id="nama_project_selesai" data-maxlength="20">' + data[i].nama_project + '</td>' +
                             '<td>' + data[i].nama_departemen + '</td>' +
                             '<td>' + data[i].target_project + '</td>' +
                             '<td>' + data[i].nama + '</td>' +
@@ -379,10 +409,13 @@
             } else {
                 $('#btn-storyboard').html('<b class="text-danger">Tidak Dilampirkan</b>')
             }
+            const doc = new DOMParser().parseFromString(deskripsi, "text/html");
+            console.log(doc)
 
             $('[id="id_project"]').val(id);
             $('[id="nama_project_edit"]').val(nama_project);
-            $('[id="deskripsi_edit"]').text(deskripsi);
+            tinymce.activeEditor.setContent(deskripsi);
+            tinymce.activeEditor.mode.set("readonly");
             $('[id="jenis_project"]').val(jenis_project);
             $('[id="ubah_status"]').val(status)
             $('[id="show_pegawai"]').val(nama_pegawai)
@@ -470,6 +503,8 @@
             });
             return false;
         });
+
+
 
 
     });
