@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2021 at 11:04 AM
+-- Generation Time: Sep 24, 2021 at 04:15 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -68,7 +68,8 @@ CREATE TABLE `maintenance` (
 --
 
 INSERT INTO `maintenance` (`id`, `id_departemen`, `id_pegawai`, `waktu_pengajuan`, `nama_pengaju`, `no_telp`, `nama_perangkat`, `deskripsi`, `urgensitas`, `status`) VALUES
-(1, 1, 2, '25/03/2021 - 10:35', 'Syarif', '89699838615', 'Acer', 'tes', 'tinggi', 'Selesai');
+(1, 1, 4, '25/03/2021 - 10:35', 'Syarif', '89699838615', 'Acer', 'tes', 'tinggi', 'Selesai'),
+(2, 2, 2, '31/08/2021 - 08:55', 'ucok baba', '89699838615', 'Acer', 'rusak', 'tinggi', 'Sedang Dikerjakan');
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,7 @@ CREATE TABLE `pengajuan` (
   `link` text DEFAULT NULL,
   `id_jenis_project` longtext NOT NULL,
   `waktu_pengajuan` varchar(50) NOT NULL,
+  `tempat` enum('Cimanggis','Tapos') NOT NULL,
   `status` enum('Menunggu Diproses','Sedang Dikerjakan','Selesai') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -121,9 +123,12 @@ CREATE TABLE `pengajuan` (
 -- Dumping data for table `pengajuan`
 --
 
-INSERT INTO `pengajuan` (`id`, `nama`, `id_departemen`, `id_pegawai`, `nama_project`, `deskripsi`, `storyboard`, `target_project`, `link`, `id_jenis_project`, `waktu_pengajuan`, `status`) VALUES
-(26, 'ucok baba', 2, 2, 'Wisuda', 'Wisuda 2021', '22-03-21_01_web01_01.pdf', '2021-03-26', '', '{\"1\":0}', '22/03/2021 - 15:55', 'Selesai'),
-(28, 'santi', 1, 1, 'Buku Tahunan 2021', 'tes', '24-03-21_Artboard_1@4x.png', '2021-03-26', '', '{\"1\":0}', '24/03/2021 - 16:19', 'Menunggu Diproses');
+INSERT INTO `pengajuan` (`id`, `nama`, `id_departemen`, `id_pegawai`, `nama_project`, `deskripsi`, `storyboard`, `target_project`, `link`, `id_jenis_project`, `waktu_pengajuan`, `tempat`, `status`) VALUES
+(28, 'santi', 1, 4, 'Buku Tahunan 2021', 'tes', '24-03-21_Artboard_1@4x.png', '2021-03-26', '', '{\"Shoot Video\":0,\"Editing Video\":1,\"Desain Gambar\":2}', '24/03/2021 - 16:19', 'Tapos', 'Sedang Dikerjakan'),
+(30, 'Syarif', 2, 3, 'Testing', 'testing', '', '2021-04-01', '', '{\"Shoot Video\":0,\"Editing Video\":1,\"Desain Gambar\":2}', '29/03/2021 - 11:38', 'Tapos', 'Selesai'),
+(31, 'Syarif', 3, 4, 'Wisuda', 'wisudaaa', '', '2021-03-25', '', '[\"Shoot Video\",\"Editing Video\",\"Desain Gambar\"]', '30/03/2021 - 09:05', 'Cimanggis', 'Selesai'),
+(33, 'Syarif', 1, 4, 'Wisuda', '&lt;p&gt;Judul project : wisuda karakter&lt;/p&gt;\r\n&lt;p&gt;ada ininyaaa&lt;/p&gt;\r\n&lt;ul&gt;\r\n&lt;li&gt;hahahah&lt;/li&gt;\r\n&lt;li&gt;hahahah&lt;/li&gt;\r\n&lt;li&gt;hahahahaha&lt;/li&gt;\r\n&lt;/ul&gt;', '', '2021-09-21', 'https://www.youtube.com/watch?v=z6gYshMhb-4&amp;ab_channel=Dwp', '[\"Shoot Video\"]', '20/09/2021 - 09:48', 'Cimanggis', 'Selesai'),
+(34, 'ucok baba', 1, 1, 'Testing', '&lt;p&gt;&lt;strong&gt;tesssssssssssssss&lt;/strong&gt;&lt;/p&gt;\r\n&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=xJFpwMm2iIg&quot;&gt;(1711) ?Rainych? Kaikai Kitan ???? - Eve ?Jujutsu Kaisen OP? cover - YouTube&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;\r\n&lt;p&gt; &lt;/p&gt;', '', '2021-09-20', '', '[\"Shoot Video\"]', '20/09/2021 - 10:52', 'Cimanggis', 'Menunggu Diproses');
 
 -- --------------------------------------------------------
 
@@ -197,7 +202,7 @@ ALTER TABLE `departemen`
 -- AUTO_INCREMENT for table `maintenance`
 --
 ALTER TABLE `maintenance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
@@ -209,7 +214,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `project`
