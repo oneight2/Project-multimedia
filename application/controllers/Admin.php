@@ -58,13 +58,13 @@ class Admin extends CI_Controller
                   ON `maintenance`.`id_departemen` = `departemen`.`id_departemen` WHERE `maintenance`.`status` = 'Sedang Dikerjakan' 
                 
                 ");
-		$selesaiPerbaikan = $this->db->query("SELECT * FROM `maintenance` JOIN `departemen`
+		$selesaiPerbaikan= $this->db->query("SELECT * FROM `maintenance` JOIN `departemen`
                   ON `maintenance`.`id_departemen` = `departemen`.`id_departemen` WHERE `maintenance`.`status` = 'Selesai' 
                 
                 ");
-
-		// DATA PEGAWAI
-		$getPegawai = $this->db->query("SELECT * FROM `pegawai`");
+                
+                // DATA PEGAWAI
+		$getPegawai = $this->db->query("SELECT * FROM `pegawai` WHERE `nama_pegawai` != 'Belum Ada'");
 		$getCountPengajuan = $this->db->query("SELECT * FROM pengajuan WHERE `status` = 'Selesai'");
 
 
@@ -79,13 +79,18 @@ class Admin extends CI_Controller
 		$data['statusMenungguPerbaikan'] = $menungguPerbaikan->num_rows();
 		$data['statusDikerjakanPerbaikan'] = $diprosesPerbaikan->num_rows();
 		$data['statusSelesaiPerbaikan'] = $selesaiPerbaikan->num_rows();
-
+		
 		$data['pegawai'] = $getPegawai->result_array();
 		$data['pengajuan'] = $getCountPengajuan->num_rows();
-
+		
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard', $data);
 	}
+	function data_pegawai(){
+		$data=$this->product_model->data_pegawai();
+		echo json_encode($data);
+	}
+
 }

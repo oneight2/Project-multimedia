@@ -1,5 +1,4 @@
 <body class="">
-    <?php $this->load->view('templates/navbar') ?>
     <div class="container-fluid" id="container">
         <div class="row mt-2">
             <div class="col-xl-4 col-md-6 mb-2 card-status">

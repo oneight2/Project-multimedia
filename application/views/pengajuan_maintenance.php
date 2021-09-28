@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <select class="form-control" id="exampleFormControlSelect1" name="departemen" required>
-                                            <option selected>Pilih Departemen</option>
+                                            <option value="">Pilih Departemen</option>
                                             <?php foreach ($departemen as $row): ?>
                                             <option value="<?= $row['id_departemen'] ?>"><?= $row['nama_departemen'] ?></option>
                                             <?php endforeach ?>
