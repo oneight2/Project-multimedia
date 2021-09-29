@@ -97,7 +97,9 @@
                                     <?php foreach ($pengajuan as $row) : ?>
                                         <tr>
                                             <td data-label="No"><?= $no++ ?></td>
-                                            <td data-label="Waktu Pengajuan"><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
+                                            <td data-label="Waktu Pengajuan"><b class="text-danger">
+                                                    <?= DateTime::createFromFormat('Y-m-d H:i:s', $row['waktu_pengajuan'])->format('d M Y') ?>
+                                                </b></td>
                                             <td data-label="Nama Project"><?= $row['nama_pengaju'] ?></td>
                                             <td data-label="Departemen"><?= $row['nama_departemen'] ?></td>
                                             <td data-label="Target"><?= $row['nama_perangkat'] ?></td>
@@ -140,7 +142,9 @@
                                     <?php foreach ($pengajuan_selesai as $row) : ?>
                                         <tr>
                                             <td data-label="No"><?= $no++ ?></td>
-                                            <td data-label="Waktu Pengajuan"><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
+                                            <td data-label="Waktu Pengajuan"><b class="text-danger">
+                                                    <?= DateTime::createFromFormat('Y-m-d H:i:s', $row['waktu_pengajuan'])->format('d M Y') ?>
+                                                </b></td>
                                             <td data-label="Nama Project"><?= $row['nama_pengaju'] ?></td>
                                             <td data-label="Departemen"><?= $row['nama_departemen'] ?></td>
                                             <td data-label="Target"><?= $row['nama_perangkat'] ?></td>

@@ -106,10 +106,14 @@
                                     <?php foreach ($pengajuan as $row) : ?>
                                         <tr>
                                             <td data-label="No"><?= $no++ ?></td>
-                                            <td data-label="Waktu Pengajuan"><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
+                                            <td data-label="Waktu Pengajuan"><b class="text-danger">
+                                                    <?= DateTime::createFromFormat('Y-m-d H:i:s', $row['waktu_pengajuan'])->format('d M Y - H:i') ?>
+                                                </b></td>
                                             <td data-label="Nama Project"><?= $row['nama_project'] ?></td>
                                             <td data-label="Departemen"><?= $row['nama_departemen'] ?></td>
-                                            <td data-label="Target"><?= $row['target_project'] ?></td>
+                                            <td data-label="Target">
+                                                <?= DateTime::createFromFormat('Y-m-d H:i:s', $row['target_project'])->format('d M Y') ?>
+                                            </td>
                                             <td data-label="Nama"><?= $row['nama'] ?></td>
                                             <td data-label="Status">
                                                 <p class="<?php
@@ -151,10 +155,14 @@
                                     <?php foreach ($pengajuan_selesai as $row) : ?>
                                         <tr>
                                             <td data-label="No"><?= $no++ ?></td>
-                                            <td data-label="Waktu Pengajuan"><b class="text-danger"><?= $row['waktu_pengajuan']; ?></b></td>
+                                            <td data-label="Waktu Pengajuan"><b class="text-danger">
+                                                    <?= DateTime::createFromFormat('Y-m-d H:i:s', $row['waktu_pengajuan'])->format('d M Y - H:i') ?>
+                                                </b></td>
                                             <td data-label="Nama Project"><?= $row['nama_project'] ?></td>
                                             <td data-label="Departemen"><?= $row['nama_departemen'] ?></td>
-                                            <td data-label="Target"><?= $row['target_project'] ?></td>
+                                            <td data-label="Target">
+                                                <?= DateTime::createFromFormat('Y-m-d H:i:s', $row['target_project'])->format('d M Y') ?>
+                                            </td>
                                             <td data-label="Nama"><?= $row['nama'] ?></td>
                                             <td data-label="Status">
                                                 <p class="<?php
