@@ -10,7 +10,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item <?= $this->uri->segment(1) === NULL || 'admin'? 'active':''  ?>">
         <a class="nav-link" href="<?= base_url('/admin') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -18,18 +18,18 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <li class="nav-item">
+    <li class="nav-item <?= $this->uri->segment(1) === 'PengajuanCimanggis'? 'active':''  ?>">
         <a class="nav-link" href="<?= base_url('/PengajuanCimanggis') ?>">
             <i class="fas fa-tasks"></i>
             <span>Pengajuan Project Cimanggis</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <?= $this->uri->segment(1) === 'PengajuanTapos'? 'active':''  ?>">
         <a class="nav-link" href="<?= base_url('/PengajuanTapos') ?>">
             <i class="fas fa-file-alt"></i>
             <span>Pengajuan Project Tapos</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item <?= $this->uri->segment(1) === "AdminMaintenance"? 'active':''  ?>">
         <a class="nav-link" href="<?= base_url('/AdminMaintenance') ?>">
             <i class="fas fa-tools"></i>
             <span>Pengajuan Perbaikan</span></a>
@@ -42,12 +42,12 @@
     </div>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <li class="nav-item <?= $this->uri->segment(1) === "pegawai"? 'active':''  ?>">
         <a class="nav-link" href="<?= base_url('/pegawai') ?>">
             <i class="fas fa-users"></i>
             <span>Daftar Pegawai</span></a>
     </li>
-     <li class="nav-item">
+     <li class="nav-item <?= $this->uri->segment(1) === "departemen"? 'active':''  ?>">
         <a class="nav-link" href="<?= base_url('/departemen') ?>">
             <i class="far fa-building"></i>
             <span>Daftar Departemen</span></a>
