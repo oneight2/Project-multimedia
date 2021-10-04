@@ -46,6 +46,7 @@ class Maintenance extends CI_Controller
     $data['kontak'] = $this->pengajuan->getKontak();
 
     $this->load->view('templates/auth_header', $data);
+		$this->load->view('templates/navbar', $data);
     $this->load->view('maintenance', $data);
     $this->load->view('templates/auth_footer', $data);
   }
@@ -64,6 +65,7 @@ class Maintenance extends CI_Controller
 
     if ($this->form_validation->run() == FALSE) {
       $this->load->view('templates/auth_header', $data);
+		  $this->load->view('templates/navbar', $data);
       $this->load->view('pengajuan_maintenance', $data);
       $this->load->view('templates/auth_footer', $data);
     } else {

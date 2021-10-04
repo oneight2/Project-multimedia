@@ -46,6 +46,7 @@ class Home extends CI_Controller
 		$data['kontak'] = $this->pengajuan->getKontak();
 
 		$this->load->view('templates/auth_header', $data);
+		$this->load->view('templates/navbar', $data);
 		$this->load->view('index', $data);
 		$this->load->view('templates/auth_footer', $data);
 	}
@@ -67,6 +68,7 @@ class Home extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('templates/auth_header', $data);
+			$this->load->view('templates/navbar', $data);
 			$this->load->view('pengajuan_project', $data);
 			$this->load->view('templates/auth_footer', $data);
 		} else {
