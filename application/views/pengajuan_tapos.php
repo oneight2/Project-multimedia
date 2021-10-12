@@ -259,10 +259,10 @@
                         warna = data[i].status
                         html += '<tr>' +
                             '<td>' + no++ + '</td>' +
-                            '<td><b class="text-danger">' + data[i].waktu_pengajuan + '</b></td>' +
+                            '<td><b class="text-danger">' + moment(data[i].waktu_pengajuan).format('D MMM YYYY - h:mm') + '</b></td>' +
                             '<td>' + data[i].nama_project + '</td>' +
                             '<td>' + data[i].nama_departemen + '</td>' +
-                            '<td><b class="text-danger">' + data[i].target_project + '</b></td>' +
+                            '<td><b class="text-danger">' + moment(data[i].target_project).format('D MMM YYYY') + '</b></td>' +
                             '<td>' + data[i].nama + '</td>' +
                             '<td><p class="warna_status mb-0" >' + data[i].status + '</p></td>' +
                             '<td>' + data[i].nama_pegawai + '</td>' +
@@ -300,10 +300,10 @@
                         warna = data[i].status
                         html += '<tr>' +
                             '<td>' + no++ + '</td>' +
-                            '<td><b class="text-danger">' + data[i].waktu_pengajuan + '</b></td>' +
+                            '<td><b class="text-danger">' + moment(data[i].waktu_pengajuan).format('D MMM YYYY - h:mm') + '</b></td>' +
                             '<td>' + data[i].nama_project + '</td>' +
                             '<td>' + data[i].nama_departemen + '</td>' +
-                            '<td>' + data[i].target_project + '</td>' +
+                            '<td>' + moment(data[i].target_project).format('D MMM YYYY') + '</td>' +
                             '<td>' + data[i].nama + '</td>' +
                             '<td><p class="warna_status mb-0" >' + data[i].status + '</p></td>' +
                             '<td>' + data[i].nama_pegawai + '</td>' +
