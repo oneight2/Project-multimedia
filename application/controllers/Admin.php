@@ -88,8 +88,14 @@ class Admin extends CI_Controller
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard', $data);
 	}
+
 	function data_pegawai(){
 		$data=$this->product_model->data_pegawai();
+		echo json_encode($data);
+	}
+
+	function get_data_pengajuan(){
+		$data=$this->product_model->get_data_pengajuan();
 		echo json_encode($data);
 	}
 

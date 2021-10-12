@@ -1,7 +1,7 @@
 <body class="">
     <div class="container-fluid" id="container">
         <div class="row mt-2">
-            <div class="col-xl-4 col-md-6 mb-2 card-status">
+            <div class="col-xl-4 col-md-6 col-sm-12 mb-2">
                 <div class="card border-left-primary shadow h-100 py-2" id="card-menunggu">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 mb-2 card-status">
+            <div class="col-xl-4 col-md-6 col-sm-12 mb-2">
                 <div class="card border-left-warning shadow h-100 py-2" id="card-dikerjakan">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 mb-2 card-status">
+            <div class="col-xl-4 col-md-6 col-sm-12 mb-2">
                 <div class="card border-left-success shadow h-100 py-2" id="card-selesai">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -63,12 +63,7 @@
                     </span>
                     <span class="text">Isi Pengajuan Project</span>
                 </a>
-                <a href="<?= base_url('maintenance'); ?>" class="btn btn-danger btn-icon-split mb-4" id="btn-perbaikan">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-tools"></i>
-                    </span>
-                    <span class="text">Isi Pengajuan Perbaikan</span>
-                </a>
+                
                 <?= $this->session->flashdata('message'); ?>
                 <div class="alert alert-info" role="alert" id="perhatian">
                     <h4 class="alert-heading">Perhatian!</h4>

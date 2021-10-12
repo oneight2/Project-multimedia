@@ -81,4 +81,32 @@ class Product_model extends CI_Model{
 		return $hasil->result();
 	}
 	
+	function get_data_pengajuan(){
+		$tglAwal=$this->input->post('tglAwal');
+		$tglAkhir=$this->input->post('tglAkhir');
+		$nama = array();
+		$CountProject = array();
+		
+
+
+		$pegawai= $this->db->query("SELECT * FROM `pegawai` WHERE `nama_pegawai` != 'Belum ada' && `nama_pegawai` != 'Jumadi'")->result();
+		foreach($pegawai as $row):
+			$id = $row->id_pegawai;
+			$nama[] = $row->nama_pegawai;
+			$CountProject[] = $this->db->query("SELECT * FROM pengajuan WHERE waktu_pengajuan BETWEEN '$tglAwal' AND '$tglAkhir' AND id_pegawai = $id   AND status= 'Selesai' ")->num_rows();
+
+		endforeach;
+
+
+
+		$project= $this->db->query("SELECT * FROM `pengajuan` WHERE `waktu_pengajuan` BETWEEN '$tglAwal' AND '$tglAkhir' AND status= 'Selesai'")->num_rows();
+		$maintenance= $this->db->query("SELECT * FROM `maintenance` WHERE `waktu_pengajuan` BETWEEN '$tglAwal' AND '$tglAkhir'")->num_rows();
+		return array(
+			'project' => $project,
+			'maintenance' => $maintenance,
+			'nama' => $nama,
+			'countProject' => $CountProject,
+			'pegawai' => $pegawai
+		);
+	}
 }

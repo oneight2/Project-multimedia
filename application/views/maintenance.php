@@ -1,14 +1,15 @@
 <body class="">
-    <div class="jumbotron">
+    <!-- <div class="jumbotron">
         <h1 class="display-5">Selamat Datang!</h1>
         <p class="lead">Klik button isi form pengajuan perbaikan untuk melakukan request perbaikan</p>
         <hr class="my-4">
         <p>Butuh bantuan tim multimedia? <button class="badge badge-warning" style="border:none" data-toggle="modal" data-target="#kontakModal">Hubungi disini</button></p>
         <a class="btn btn-primary btn-md" id="btn-pengajuan" href="<?= base_url('maintenance/project'); ?>" role="button">Isi Pengajuan Perbaikan</a>
-    </div>
+    </div> -->
     <div class="container-fluid" id="container">
+
         <div class="row mt-2">
-            <div class="col-xl-4 col-md-6 mb-2 card-status">
+            <div class="col-xl-4 col-md-6 col-sm-12 mb-2 ">
                 <div class="card border-left-primary shadow h-100 py-2" id="card-menunggu">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -24,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 mb-2 card-status">
+            <div class="col-xl-4 col-md-6 col-sm-12 mb-2 ">
                 <div class="card border-left-warning shadow h-100 py-2" id="card-dikerjakan">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -40,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 mb-2 card-status">
+            <div class="col-xl-4 col-md-6 col-sm-12 mb-2 ">
                 <div class="card border-left-success shadow h-100 py-2" id="card-selesai">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -64,6 +65,12 @@
                 <h6 class="m-0 font-weight-bold text-primary">Data Pengajuan Perbaikan</h6>
             </div>
             <div class="card-body">
+                <a href="<?= base_url('maintenance/project'); ?>" class="btn btn-danger btn-icon-split mb-4" id="btn-perbaikan">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-tools"></i>
+                    </span>
+                    <span class="text">Isi Pengajuan Perbaikan</span>
+                </a>
                 <!-- <a href="<?= base_url('maintenance/project'); ?>" class="btn btn-primary btn-md mb-2 pulse-button border" id="btn-pengajuan">Isi Pengajuan Project</a> -->
                 <?= $this->session->flashdata('message'); ?>
                 <!-- TABS -->

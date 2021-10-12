@@ -106,6 +106,34 @@
 <div class="row">
   <div class="col">
     <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Data Performance</h6>
+      </div>
+      <div class="card-body">
+        <!-- <form> -->
+        <div class="form-row">
+          <div class="col">
+            <input type="date" class="form-control" id="tgl-awal">
+          </div>
+          <div class="col">
+            <input type="date" class="form-control" id="tgl-akhir">
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary mb-2" id="btn-search">search</button>
+          </div>
+        </div>
+        <!-- </form> -->
+        <div id="hasil">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Data Performance</h6>
@@ -145,6 +173,11 @@
     </div>
   </div>
 </div>
+
+
+
+
+
 </div>
 <!-- FOOTER -->
 
@@ -152,107 +185,41 @@
 <script src="<?= base_url('assets/') ?>vendor/chart.js/Chart.min.js"></script>
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/') ?>js/demo/chart-area-demo.js"></script>
-<!-- <script src="<?= base_url('assets/') ?>js/demo/chart-pie-demo.js"></script> -->
+<!-- <script src="<?= base_url('assets/') ?>js/dashboard.js"></script> -->
 
 <script>
-  // Set new default font family and font color to mimic Bootstrap's default styling
-  Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-  Chart.defaults.global.defaultFontColor = '#858796';
-
-  // Cimanggis
-  var ctx = document.getElementById("cimanggis");
-  var cimanggis = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ["Pending Project", "Dikerjakan", "Selesai"],
-      datasets: [{
-        data: [<?= $statusMenungguCimanggis ?>, <?= $statusDikerjakanCimanggis ?>, <?= $statusSelesaiCimanggis ?>],
-        backgroundColor: ['#4e73df', '#f6c23e', '#1cc88a'],
-        hoverBackgroundColor: ['#2e59d9', '#E4AA17', '#12AE76'],
-        hoverBorderColor: "rgba(234, 236, 244, 1)",
-      }],
-    },
-    options: {
-      maintainAspectRatio: false,
-      tooltips: {
-        backgroundColor: "rgb(255,255,255)",
-        bodyFontColor: "#858796",
-        borderColor: '#dddfeb',
-        borderWidth: 1,
-        xPadding: 15,
-        yPadding: 15,
-        displayColors: false,
-        caretPadding: 10,
+  //Save product
+  $('#btn-search').on('click', function() {
+    var tglAwal = $('#tgl-awal').val();
+    var tglAkhir = $('#tgl-akhir').val();
+    console.log('awal', tglAwal)
+    console.log('akhir', tglAkhir)
+    $.ajax({
+      type: "POST",
+      url: "<?php echo site_url('Admin/get_data_pengajuan') ?>",
+      dataType: "JSON",
+      data: {
+        tglAwal: tglAwal,
+        tglAkhir: tglAkhir
       },
-      legend: {
-        display: false
-      },
-      cutoutPercentage: 80,
-    },
-  });
-
-  // Cimanggis
-  var ctx = document.getElementById("tapos");
-  var tapos = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ["Pending Project", "Dikerjakan", "Selesai"],
-      datasets: [{
-        data: [<?= $statusMenungguTapos ?>, <?= $statusDikerjakanTapos ?>, <?= $statusSelesaiTapos ?>],
-        backgroundColor: ['#4e73df', '#f6c23e', '#1cc88a'],
-        hoverBackgroundColor: ['#2e59d9', '#E4AA17', '#12AE76'],
-        hoverBorderColor: "rgba(234, 236, 244, 1)",
-      }],
-    },
-    options: {
-      maintainAspectRatio: false,
-      tooltips: {
-        backgroundColor: "rgb(255,255,255)",
-        bodyFontColor: "#858796",
-        borderColor: '#dddfeb',
-        borderWidth: 1,
-        xPadding: 15,
-        yPadding: 15,
-        displayColors: false,
-        caretPadding: 10,
-      },
-      legend: {
-        display: false
-      },
-      cutoutPercentage: 80,
-    },
-  });
-
-  // Cimanggis
-  var ctx = document.getElementById("perbaikan");
-  var perbaikan = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ["Pending Project", "Dikerjakan", "Selesai"],
-      datasets: [{
-        data: [<?= $statusMenungguPerbaikan ?>, <?= $statusDikerjakanPerbaikan ?>, <?= $statusSelesaiPerbaikan ?>],
-        backgroundColor: ['#4e73df', '#f6c23e', '#1cc88a'],
-        hoverBackgroundColor: ['#2e59d9', '#E4AA17', '#12AE76'],
-        hoverBorderColor: "rgba(234, 236, 244, 1)",
-      }],
-    },
-    options: {
-      maintainAspectRatio: false,
-      tooltips: {
-        backgroundColor: "rgb(255,255,255)",
-        bodyFontColor: "#858796",
-        borderColor: '#dddfeb',
-        borderWidth: 1,
-        xPadding: 15,
-        yPadding: 15,
-        displayColors: false,
-        caretPadding: 10,
-      },
-      legend: {
-        display: false
-      },
-      cutoutPercentage: 80,
-    },
+      success: function(data) {
+        var html = '';
+        var i;
+        
+        for (i = 0; i < data.nama.length; i++) {
+          for (i = 0; i < data.countProject.length; i++) {
+            html += '<p>'+ data.nama[i] +': '+ data.countProject[i] +'</p>' ;
+          }
+        }
+        html += '<p> Maintenance' + data.maintenance + '</p>'+
+                '<p>Total Project'+ data.project +'</p>'
+        $('#hasil').html(html);
+        console.log(html);
+        console.log(data);
+        console.log(data.countProject.length);
+      }
+    });
+    return false;
   });
 </script>
 
