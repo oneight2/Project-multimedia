@@ -112,14 +112,16 @@
       <div class="card-body">
         <!-- <form> -->
         <div class="form-row">
-          <div class="col">
+          <div class="col-5">
+            <small class="text-info">Mulai Tanggal</small>
             <input type="date" class="form-control" id="tgl-awal">
           </div>
-          <div class="col">
+          <div class="col-5">
+            <small class="text-info">Sampai Tanggal</small>
             <input type="date" class="form-control" id="tgl-akhir">
           </div>
-          <div class="col-auto">
-            <button class="btn btn-primary mb-2" id="btn-search">search</button>
+          <div class="col-auto d-flex align-items-end">
+            <button class="btn btn-primary btn-block" id="btn-search">search</button>
           </div>
         </div>
         <!-- </form> -->
@@ -185,44 +187,10 @@
 <script src="<?= base_url('assets/') ?>vendor/chart.js/Chart.min.js"></script>
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/') ?>js/demo/chart-area-demo.js"></script>
-<!-- <script src="<?= base_url('assets/') ?>js/dashboard.js"></script> -->
 
-<script>
-  //Save product
-  $('#btn-search').on('click', function() {
-    var tglAwal = $('#tgl-awal').val();
-    var tglAkhir = $('#tgl-akhir').val();
-    console.log('awal', tglAwal)
-    console.log('akhir', tglAkhir)
-    $.ajax({
-      type: "POST",
-      url: "<?php echo site_url('Admin/get_data_pengajuan') ?>",
-      dataType: "JSON",
-      data: {
-        tglAwal: tglAwal,
-        tglAkhir: tglAkhir
-      },
-      success: function(data) {
-        var html = '';
-        var i;
-        
-        for (i = 0; i < data.nama.length; i++) {
-          for (i = 0; i < data.countProject.length; i++) {
-            html += '<p>'+ data.nama[i] +': '+ data.countProject[i] +'</p>' ;
-          }
-        }
-        html += '<p> Maintenance' + data.maintenance + '</p>'+
-                '<p>Total Project'+ data.project +'</p>'
-        $('#hasil').html(html);
-        console.log(html);
-        console.log(data);
-        console.log(data.countProject.length);
-      }
-    });
-    return false;
-  });
-</script>
 
+<?php $this->load->view('footer/chart-dashboard'); ?>
+<?php $this->load->view('footer/rekap-dashboard'); ?>
 
 </body>
 

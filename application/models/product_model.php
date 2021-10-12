@@ -85,11 +85,13 @@ class Product_model extends CI_Model{
 		$tglAwal=$this->input->post('tglAwal');
 		$tglAkhir=$this->input->post('tglAkhir');
 		$nama = array();
+		$namaDepartemen = array();
 		$CountProject = array();
+		$CountProjectDepartemen = array();
 		
-
-
 		$pegawai= $this->db->query("SELECT * FROM `pegawai` WHERE `nama_pegawai` != 'Belum ada' && `nama_pegawai` != 'Jumadi'")->result();
+		$departemen= $this->db->query("SELECT * FROM `departemen`")->result();
+		// Project
 		foreach($pegawai as $row):
 			$id = $row->id_pegawai;
 			$nama[] = $row->nama_pegawai;
@@ -97,16 +99,24 @@ class Product_model extends CI_Model{
 
 		endforeach;
 
-
+		foreach($departemen as $row):
+			$idDepartemen = $row->id_departemen;
+			$namaDepartemen[] = $row->nama_departemen;
+			$CountProjectDepartemen[] = $this->db->query("SELECT * FROM pengajuan WHERE waktu_pengajuan BETWEEN '$tglAwal' AND '$tglAkhir' AND id_departemen = $idDepartemen AND status= 'Selesai' ")->num_rows();
+		endforeach;
 
 		$project= $this->db->query("SELECT * FROM `pengajuan` WHERE `waktu_pengajuan` BETWEEN '$tglAwal' AND '$tglAkhir' AND status= 'Selesai'")->num_rows();
 		$maintenance= $this->db->query("SELECT * FROM `maintenance` WHERE `waktu_pengajuan` BETWEEN '$tglAwal' AND '$tglAkhir'")->num_rows();
+
 		return array(
 			'project' => $project,
 			'maintenance' => $maintenance,
 			'nama' => $nama,
+			'namaDepartemen' => $namaDepartemen,
 			'countProject' => $CountProject,
-			'pegawai' => $pegawai
+			'countProjectDepartemen' => $CountProjectDepartemen,
+			'pegawai' => $pegawai,
+			'departemen' => $departemen
 		);
 	}
 }
